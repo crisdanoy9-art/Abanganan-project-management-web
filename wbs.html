@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WBS — Abanganan</title>
+<meta name="description" content="Abanganan: Boarding House and Room Finder System for Dapitan City — Project Portfolio" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/navbar.css" />
+</head>
+<body>
+
+<div class="bg-static" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/logo.png" alt="" /></span>
+      <span class="brand-text">
+        <strong>ABANGANAN</strong>
+        <small>BOARDING HOUSE &amp; ROOM FINDER</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">HOME</a>
+        <a href="wbs.html" class="active">WBS</a>
+        <a href="activity-sequence.html">AS</a>
+        <a href="duration-estimation.html">ADE</a>
+        <a href="gantt-chart.html">GC</a>
+        <a href="team.html">TEAM</a>
+    </nav>
+
+    <div class="nav-end">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+<main class="page-view active">
+  <section class="page-hero">
+    <img class="ph-img" src="assets/hero.jpg" alt="Aerial view of Dapitan City" fetchpriority="high" />
+    <div class="ph-veil" aria-hidden="true"></div>
+
+    <div class="container ph-content">
+      <span class="ph-eyebrow">ABANGANAN &middot; 12-WEEK PLAN</span>
+      <h1 class="ph-title grad-text">WORK BREAKDOWN STRUCTURE</h1>
+      <p class="ph-intro">The Work Breakdown Structure splits Abanganan into eight major deliverables across a 12-week plan. Each one is broken down again into the smaller tasks the team actually has to finish, so nothing in the project is left unaccounted for.</p>
+      <div class="ph-divider"></div>
+    </div>
+
+  </section>
+
+<section class="wbs-wrap">
+    <div class="wbs-scroll">
+      <div class="wbs-chart wbs-chart-8">
+        <div class="wbs-root">
+          <span class="r-tag">ROOT DELIVERABLE &middot; 0.0</span>
+          <h3>ABANGANAN</h3>
+          <p>Boarding House and Room Finder System</p>
+        </div>
+
+        <div class="wbs-trunk" aria-hidden="true"></div>
+        <div class="wbs-spine" aria-hidden="true"></div>
+
+        <div class="wbs-cols wbs-cols-8">
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">1.0</span>
+            <span class="ctitle">Planning and Requirements</span>
+            <span class="ccount">6 activities &middot; Weeks 1–2</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">1.1</span><span class="stx">Define project objectives and scope</span></div>
+            <div class="wbs-sub"><span class="sid">1.2</span><span class="stx">Identify stakeholders (room seekers, landlords, admin)</span></div>
+            <div class="wbs-sub"><span class="sid">1.3</span><span class="stx">Analyze the current room-finding process</span></div>
+            <div class="wbs-sub"><span class="sid">1.4</span><span class="stx">Gather initial requirements from users</span></div>
+            <div class="wbs-sub"><span class="sid">1.5</span><span class="stx">Define functional and non-functional requirements</span></div>
+            <div class="wbs-sub"><span class="sid">1.6</span><span class="stx">Identify project risks</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">2.0</span>
+            <span class="ctitle">UI/UX Design</span>
+            <span class="ccount">6 activities &middot; Weeks 3–4</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">2.1</span><span class="stx">Design the room seeker user flow</span></div>
+            <div class="wbs-sub"><span class="sid">2.2</span><span class="stx">Design the landlord user flow</span></div>
+            <div class="wbs-sub"><span class="sid">2.3</span><span class="stx">Design admin dashboard wireframes</span></div>
+            <div class="wbs-sub"><span class="sid">2.4</span><span class="stx">Design the map-based listing interface</span></div>
+            <div class="wbs-sub"><span class="sid">2.5</span><span class="stx">Build Figma prototypes</span></div>
+            <div class="wbs-sub"><span class="sid">2.6</span><span class="stx">Define the visual design system</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">3.0</span>
+            <span class="ctitle">Backend and Database Setup</span>
+            <span class="ccount">6 activities &middot; Weeks 5–6</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">3.1</span><span class="stx">Set up the Supabase project (database, auth, storage)</span></div>
+            <div class="wbs-sub"><span class="sid">3.2</span><span class="stx">Design the database schema / ERD</span></div>
+            <div class="wbs-sub"><span class="sid">3.3</span><span class="stx">Set up user authentication and roles</span></div>
+            <div class="wbs-sub"><span class="sid">3.4</span><span class="stx">Set up storage for listing photos</span></div>
+            <div class="wbs-sub"><span class="sid">3.5</span><span class="stx">Configure the API structure</span></div>
+            <div class="wbs-sub"><span class="sid">3.6</span><span class="stx">Set up the GitHub repository and environments</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">4.0</span>
+            <span class="ctitle">Frontend Development</span>
+            <span class="ccount">8 activities &middot; Weeks 5–8</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">4.1</span><span class="stx">Develop landlord registration and login</span></div>
+            <div class="wbs-sub"><span class="sid">4.2</span><span class="stx">Develop listing upload (photos, price, description, amenities)</span></div>
+            <div class="wbs-sub"><span class="sid">4.3</span><span class="stx">Develop room seeker registration and login</span></div>
+            <div class="wbs-sub"><span class="sid">4.4</span><span class="stx">Develop listing browsing and detail pages</span></div>
+            <div class="wbs-sub"><span class="sid">4.5</span><span class="stx">Develop filtering by barangay and price</span></div>
+            <div class="wbs-sub"><span class="sid">4.6</span><span class="stx">Develop nearest-room search by reference point</span></div>
+            <div class="wbs-sub"><span class="sid">4.7</span><span class="stx">Develop the private inquiry system</span></div>
+            <div class="wbs-sub"><span class="sid">4.8</span><span class="stx">Develop landlord listing edit/take-down tools</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">5.0</span>
+            <span class="ctitle">Map and Location Integration</span>
+            <span class="ccount">4 activities &middot; Weeks 8–9</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">5.1</span><span class="stx">Integrate Google Maps / Mapbox API</span></div>
+            <div class="wbs-sub"><span class="sid">5.2</span><span class="stx">Enable landlords to pin the exact property location</span></div>
+            <div class="wbs-sub"><span class="sid">5.3</span><span class="stx">Enable seekers to view listings on a map</span></div>
+            <div class="wbs-sub"><span class="sid">5.4</span><span class="stx">Implement distance calculation to a reference point</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">6.0</span>
+            <span class="ctitle">Admin Dashboard</span>
+            <span class="ccount">5 activities &middot; Weeks 9–10</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">6.1</span><span class="stx">Develop listing moderation tools</span></div>
+            <div class="wbs-sub"><span class="sid">6.2</span><span class="stx">Develop landlord ownership verification</span></div>
+            <div class="wbs-sub"><span class="sid">6.3</span><span class="stx">Develop seeker-landlord issue resolution tools</span></div>
+            <div class="wbs-sub"><span class="sid">6.4</span><span class="stx">Develop the rental trend dashboard</span></div>
+            <div class="wbs-sub"><span class="sid">6.5</span><span class="stx">Develop reports on popular and underserved areas</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">7.0</span>
+            <span class="ctitle">Testing and Revisions</span>
+            <span class="ccount">6 activities &middot; Weeks 10–11</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">7.1</span><span class="stx">Prepare the test plan and test cases</span></div>
+            <div class="wbs-sub"><span class="sid">7.2</span><span class="stx">Conduct unit and integration testing</span></div>
+            <div class="wbs-sub"><span class="sid">7.3</span><span class="stx">Conduct usability testing</span></div>
+            <div class="wbs-sub"><span class="sid">7.4</span><span class="stx">Conduct security testing</span></div>
+            <div class="wbs-sub"><span class="sid">7.5</span><span class="stx">Fix identified defects</span></div>
+            <div class="wbs-sub"><span class="sid">7.6</span><span class="stx">Gather feedback and revise</span></div>
+          </div>
+        </div>
+
+        <div class="wbs-col">
+          <button class="wbs-col-head" type="button">
+            <span class="cid">8.0</span>
+            <span class="ctitle">Documentation and Pitch Prep</span>
+            <span class="ccount">6 activities &middot; Weeks 11–12</span>
+            <span class="ctoggle" aria-hidden="true">&#8964;</span>
+          </button>
+          <div class="wbs-col-list">
+            <div class="wbs-sub"><span class="sid">8.1</span><span class="stx">Prepare technical documentation</span></div>
+            <div class="wbs-sub"><span class="sid">8.2</span><span class="stx">Prepare the user guide</span></div>
+            <div class="wbs-sub"><span class="sid">8.3</span><span class="stx">Write the pitch video script and outline</span></div>
+            <div class="wbs-sub"><span class="sid">8.4</span><span class="stx">Prepare slides and visual aids</span></div>
+            <div class="wbs-sub"><span class="sid">8.5</span><span class="stx">Record and edit the pitch video</span></div>
+            <div class="wbs-sub"><span class="sid">8.6</span><span class="stx">Final review and submission</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+<!-- =========================================================
+     VIEW: AS
+     ========================================================= -->
+</main>
+</div><!-- /.page-wrap -->
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="index.html">Boarding House &amp; Room Finder System for Dapitan City</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <span class="footer-group">Groupo HAPLO</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/wbs.js"></script>
+</body>
+</html>

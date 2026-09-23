@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gantt Chart — Abanganan</title>
+<meta name="description" content="Abanganan: Boarding House and Room Finder System for Dapitan City — Project Portfolio" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/navbar.css" />
+</head>
+<body>
+
+<div class="bg-static" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/logo.png" alt="" /></span>
+      <span class="brand-text">
+        <strong>ABANGANAN</strong>
+        <small>BOARDING HOUSE &amp; ROOM FINDER</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">HOME</a>
+        <a href="wbs.html">WBS</a>
+        <a href="activity-sequence.html">AS</a>
+        <a href="duration-estimation.html">ADE</a>
+        <a href="gantt-chart.html" class="active">GC</a>
+        <a href="team.html">TEAM</a>
+    </nav>
+
+    <div class="nav-end">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+<main class="page-view active">
+  <section class="page-hero">
+    <img class="ph-img" src="assets/hero.jpg" alt="Aerial view of Dapitan City" fetchpriority="high" />
+    <div class="ph-veil" aria-hidden="true"></div>
+
+    <div class="container ph-content">
+      <span class="ph-eyebrow">ABANGANAN &middot; 12-WEEK PLAN</span>
+      <h1 class="ph-title grad-text">GANTT CHART</h1>
+      <p class="ph-intro">The Gantt Chart lays out all eight phases across a 12-week schedule &mdash; when each phase starts, how long it runs, and which phases overlap to keep the timeline short.</p>
+      <div class="ph-divider"></div>
+    </div>
+
+  </section>
+
+<section class="container" style="padding-bottom:3rem;">
+    <div class="gantt-shell" data-reveal>
+      <div class="gantt-scroll">
+        <div class="gantt-inner">
+          <div class="gantt-head">
+            <div class="g-label">Activity / Task</div>
+            <div class="g-weeks">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">1. Planning and Requirements</span><span class="t-meta">2 weeks &middot; Weeks 1–2</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:1; --span:2; --c1:#2dd4bf; --c2:#0d9488; --d:0s;">
+                Planning<span class="bar-tip">Planning and Requirements &middot; 2 weeks &middot; Weeks 1–2</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">2. UI/UX Design</span><span class="t-meta">2 weeks &middot; Weeks 3–4</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:3; --span:2; --c1:#4ade80; --c2:#16a34a; --d:.6s;">
+                UI/UX Design<span class="bar-tip">UI/UX Design &middot; 2 weeks &middot; Weeks 3–4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">3. Backend and Database Setup</span><span class="t-meta">2 weeks &middot; Weeks 5–6</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:5; --span:2; --c1:#facc15; --c2:#ca8a04; --d:1.2s;">
+                Backend Setup<span class="bar-tip">Backend and Database Setup &middot; 2 weeks &middot; Weeks 5–6</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">4. Frontend Development</span><span class="t-meta">4 weeks &middot; Weeks 5–8</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:5; --span:4; --c1:#fb923c; --c2:#ea580c; --d:1.8s;">
+                Frontend Dev<span class="bar-tip">Frontend Development &middot; 4 weeks &middot; Weeks 5–8 &middot; Parallel with Backend Setup</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">5. Map and Location Integration</span><span class="t-meta">2 weeks &middot; Weeks 8–9</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:8; --span:2; --c1:#f87171; --c2:#dc2626; --d:2.4s;">
+                Map Integration<span class="bar-tip">Map and Location Integration &middot; 2 weeks &middot; Weeks 8–9</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">6. Admin Dashboard</span><span class="t-meta">2 weeks &middot; Weeks 9–10</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:9; --span:2; --c1:#f472b6; --c2:#db2777; --d:3s;">
+                Admin Dashboard<span class="bar-tip">Admin Dashboard &middot; 2 weeks &middot; Weeks 9–10</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">7. Testing and Revisions</span><span class="t-meta">2 weeks &middot; Weeks 10–11</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:10; --span:2; --c1:#c084fc; --c2:#7c3aed; --d:3.6s;">
+                Testing<span class="bar-tip">Testing and Revisions &middot; 2 weeks &middot; Weeks 10–11</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="g-task"><span class="t-name">8. Documentation and Pitch Prep</span><span class="t-meta">2 weeks &middot; Weeks 11–12</span></div>
+            <div class="g-track">
+              <div class="g-bar" style="--start:11; --span:2; --c1:#60a5fa; --c2:#2563eb; --d:4.2s;">
+                Documentation<span class="bar-tip">Documentation and Pitch Prep &middot; 2 weeks &middot; Weeks 11–12</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gantt-legend" data-reveal>
+      <span class="lg"><span class="sw" style="background:linear-gradient(120deg,#2dd4bf,#16a34a)"></span> Planning &amp; Design</span>
+      <span class="lg"><span class="sw" style="background:linear-gradient(120deg,#facc15,#ea580c)"></span> Backend &amp; Frontend (parallel)</span>
+      <span class="lg"><span class="sw" style="background:linear-gradient(120deg,#f87171,#7c3aed)"></span> Integration &amp; Admin</span>
+      <span class="lg"><span class="sw" style="background:linear-gradient(120deg,#60a5fa,#2563eb)"></span> Testing &amp; Documentation</span>
+    </div>
+
+
+
+<!-- =========================================================
+     VIEW: TEAM
+     ========================================================= -->
+</main>
+</div><!-- /.page-wrap -->
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="index.html">Boarding House &amp; Room Finder System for Dapitan City</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <span class="footer-group">Groupo HAPLO</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/gantt.js"></script>
+</body>
+</html>

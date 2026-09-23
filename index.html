@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABANGANAN — Boarding House &amp; Room Finder</title>
+<meta name="description" content="Abanganan: Boarding House and Room Finder System for Dapitan City — Project Portfolio" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/navbar.css" />
+</head>
+<body>
+
+<div class="bg-static" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/logo.png" alt="" /></span>
+      <span class="brand-text">
+        <strong>ABANGANAN</strong>
+        <small>BOARDING HOUSE &amp; ROOM FINDER</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">HOME</a>
+        <a href="wbs.html">WBS</a>
+        <a href="activity-sequence.html">AS</a>
+        <a href="duration-estimation.html">ADE</a>
+        <a href="gantt-chart.html">GC</a>
+        <a href="team.html">TEAM</a>
+    </nav>
+
+    <div class="nav-end">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+<main class="page-view active">
+  <section class="page-hero home-hero">
+    <img class="ph-img" src="assets/hero.jpg" alt="Aerial view of Dapitan City" fetchpriority="high" />
+    <div class="ph-veil" aria-hidden="true"></div>
+
+    <div class="container ph-content">
+      <div class="pill">
+        <span class="dot"></span> INFORMATION SYSTEMS PROJECT &middot; DAPITAN CITY
+      </div>
+
+      <h1 class="ph-title grad-text">ABANGANAN</h1>
+
+      <p class="ph-sub">Boarding House and Room Finder System for Dapitan City</p>
+
+      <p class="ph-tagline">&ldquo;Find your next room without the awkward search.&rdquo;</p>
+
+      <p class="ph-intro">
+        Abanganan connects room seekers &mdash; students, workers, or anyone needing a place to stay &mdash;
+        with landlords renting boarding houses and rooms in Dapitan City. Instead of walking around, asking
+        strangers, or posting publicly on Facebook groups, seekers can browse and inquire privately, while
+        landlords upload photos, prices and pin their exact location on a map.
+      </p>
+
+      <div class="hero-actions center">
+        <a class="btn btn-primary" href="wbs.html">EXPLORE WBS</a>
+        <a class="btn btn-ghost" href="#overview">PROJECT OVERVIEW</a>
+      </div>
+
+      <div class="hero-stats center">
+        <div class="stat"><strong>8</strong><span>Major Phases</span></div>
+        <div class="stat"><strong>12</strong><span>Weeks Duration</span></div>
+        <div class="stat"><strong>3</strong><span>User Types</span></div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="users">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">SYSTEM USERS</span>
+        <h2>Built for <span class="grad-text">three</span> types of users</h2>
+        <p>Every role gets a dedicated experience inside the Abanganan platform.</p>
+      </div>
+      <div class="card-grid three">
+        <article class="glass-card tilt" style="--accent:#22d3ee" data-reveal>
+          <div class="card-glow"></div>
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+          </div>
+          <h3>ROOM SEEKER</h3>
+          <p>Students, workers, or anyone who needs a place to stay &mdash; including those who'd rather not post publicly that they're looking.</p>
+          <ul class="mini-list">
+            <li>Filter by barangay &amp; price</li>
+            <li>Find the nearest room to school/work</li>
+            <li>Send private inquiries</li>
+          </ul>
+        </article>
+        <article class="glass-card tilt" style="--accent:#8b5cf6" data-reveal>
+          <div class="card-glow"></div>
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+          </div>
+          <h3>LANDLORD</h3>
+          <p>Boarding house owners renting out rooms in Dapitan City who want a digital, centralized channel to list them.</p>
+          <ul class="mini-list">
+            <li>Upload photos, price &amp; amenities</li>
+            <li>Pin the exact map location</li>
+            <li>Edit or take down listings anytime</li>
+          </ul>
+        </article>
+        <article class="glass-card tilt" style="--accent:#d946ef" data-reveal>
+          <div class="card-glow"></div>
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/><path d="m9.5 12.5 2 2 3.5-4"/></svg>
+          </div>
+          <h3>ADMIN</h3>
+          <p>Monitors the platform, verifies landlords and tracks which areas of the city are most in demand.</p>
+          <ul class="mini-list">
+            <li>Verify landlord ownership</li>
+            <li>Remove fake/outdated listings</li>
+            <li>View rental trend dashboard</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="section navy" id="overview">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">PROJECT OVERVIEW</span>
+        <h2>What is <span class="grad-text">Abanganan</span>?</h2>
+      </div>
+      <div class="two-col">
+        <div class="glass-panel" data-reveal>
+          <p><strong>Abanganan</strong> is a web-based platform that connects room seekers &mdash; students, workers, or anyone needing a place to stay &mdash; with landlords renting boarding houses and rooms in Dapitan City. Right now, finding a room means walking around and asking around, or posting publicly on Facebook groups where everyone can see it, and landlords have no central place to list their rooms.</p>
+          <p>Abanganan fixes that with three user types: <strong>Room Seekers</strong>, who browse, filter and privately inquire about listings; <strong>Landlords</strong>, who upload photos, prices, descriptions and pin their exact location on a map; and an <strong>Admin</strong>, who monitors the platform and tracks which areas of the city are most in demand.</p>
+        </div>
+        <div class="glass-panel" data-reveal>
+          <h4 class="panel-title">Why it matters</h4>
+          <ul class="check-list">
+            <li>Lets shy or introverted seekers look for a room privately, with no public posting</li>
+            <li>Gives seekers one place to browse every available room in Dapitan City</li>
+            <li>Lets seekers filter by barangay, price, and distance to school or work</li>
+            <li>Gives landlords an easy way to list a property with exact map location</li>
+            <li>Enables private, direct inquiries with no public exposure for either side</li>
+            <li>Gives the admin visibility into rental trends across the city</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="goals">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">GOALS &amp; OBJECTIVES</span>
+        <h2>What the project aims to <span class="grad-text">achieve</span></h2>
+      </div>
+      <div class="card-grid three">
+        <article class="glass-card tilt" data-reveal><div class="card-glow"></div><span class="num-badge">01</span><h3>Enable Private Room Search</h3><p>Let shy or introverted seekers browse and inquire about rooms privately, without publicly posting that they're looking.</p></article>
+        <article class="glass-card tilt" data-reveal><div class="card-glow"></div><span class="num-badge">02</span><h3>Centralize Room Listings</h3><p>Give room seekers one place to browse every available room in Dapitan City instead of walking around and asking strangers.</p></article>
+        <article class="glass-card tilt" data-reveal><div class="card-glow"></div><span class="num-badge">03</span><h3>Filter &amp; Compare Listings</h3><p>Let seekers filter and compare listings by barangay, price, and distance to a reference point like school or work.</p></article>
+        <article class="glass-card tilt" data-reveal><div class="card-glow"></div><span class="num-badge">04</span><h3>Empower Landlords</h3><p>Give landlords an easy way to list a property with photos, price, description and an exact map location.</p></article>
+        <article class="glass-card tilt" data-reveal><div class="card-glow"></div><span class="num-badge">05</span><h3>Enable Private Inquiries</h3><p>Allow direct communication between a seeker and landlord, with no public posting on either side.</p></article>
+        <article class="glass-card tilt" data-reveal><div class="card-glow"></div><span class="num-badge">06</span><h3>Support Admin Insights</h3><p>Give the admin visibility into rental trends across the city, including popular and underserved areas.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section navy" id="scope">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">PROJECT SCOPE</span>
+        <h2>What is <span class="grad-text">included</span> in the system</h2>
+      </div>
+      <div class="two-col">
+        <div class="glass-panel" data-reveal>
+          <h4 class="panel-title in"><span class="tick">✓</span> In Scope</h4>
+          <ul class="check-list">
+            <li>Landlord accounts: create, edit or take down listings anytime</li>
+            <li>Listing uploads with photos, price, description and amenities</li>
+            <li>Exact property location pinned on a map</li>
+            <li>Room seeker browsing of all listings with full details</li>
+            <li>Filtering by barangay or price range</li>
+            <li>Search for the nearest available room to a reference point (school/work)</li>
+            <li>Private inquiry between a seeker and a landlord</li>
+            <li>Admin monitoring, listing removal and landlord verification</li>
+            <li>Admin dashboard with basic rental trends per barangay</li>
+            <li>Geographic coverage limited to Dapitan City</li>
+          </ul>
+        </div>
+        <div class="glass-panel" data-reveal>
+          <h4 class="panel-title out"><span class="tick">✕</span> Out of Scope</h4>
+          <ul class="check-list muted">
+            <li>Online payment, deposit or booking/reservation processing</li>
+            <li>Digital lease or rental contract generation and e-signatures</li>
+            <li>Tenant background or credit checks</li>
+            <li>Listings for areas outside Dapitan City</li>
+            <li>Integration with government housing/permit systems</li>
+            <li>Real-time chat &mdash; inquiries are private messages, not live chat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="resources">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">RESOURCES &amp; TOOLS</span>
+        <h2>What it takes to <span class="grad-text">build it</span></h2>
+      </div>
+      <div class="two-col">
+        <div class="glass-panel" data-reveal>
+          <h4 class="panel-title">Team &amp; Tech Stack</h4>
+          <p>A 5-member team &mdash; project lead, landlord-side developer, seeker-side developer, admin/data developer, and documentation &amp; QA.</p>
+          <dl class="tech-text">
+            <dt>Framework</dt><dd>Next.js &middot; TypeScript</dd>
+            <dt>Styling</dt><dd>Tailwind CSS</dd>
+            <dt>Backend</dt><dd>Supabase (database, auth, storage)</dd>
+            <dt>Maps</dt><dd>Google Maps / Mapbox API</dd>
+            <dt>Design</dt><dd>Figma</dd>
+            <dt>Code &amp; hosting</dt><dd>GitHub &middot; Vercel</dd>
+          </dl>
+          <a class="btn btn-ghost" href="team.html" style="margin-top:1.2rem;">MEET THE TEAM</a>
+        </div>
+        <div class="glass-panel" data-reveal>
+          <h4 class="panel-title">Estimated Budget</h4>
+          <ul class="check-list">
+            <li>Domain name &mdash; &#8369;800/year</li>
+            <li>Hosting &mdash; &#8369;0&ndash;1,500/month (free tier to start)</li>
+            <li>Database &amp; storage (Supabase) &mdash; &#8369;0 (free tier)</li>
+            <li>Map API &mdash; &#8369;0&ndash;2,000 as usage grows</li>
+            <li>Design tools (Figma) &mdash; &#8369;0</li>
+            <li>Miscellaneous &mdash; &#8369;1,000</li>
+          </ul>
+          <p style="margin-top:.9rem;"><strong>Total estimate:</strong> &#8776; &#8369;2,000&ndash;5,300</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+
+  <section class="tech-band">
+    <div class="container">
+      <div class="team-tech" data-reveal>
+        <span class="team-tech-label">BUILT WITH</span>
+      </div>
+    </div>
+    <div class="tech-marquee full" aria-label="Tech stack"></div>
+  </section>
+
+</main>
+</div><!-- /.page-wrap -->
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="index.html">Boarding House &amp; Room Finder System for Dapitan City</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <span class="footer-group">Groupo HAPLO</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/techstack.js"></script>
+
+</body>
+</html>

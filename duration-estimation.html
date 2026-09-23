@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Activity Duration Estimation — Abanganan</title>
+<meta name="description" content="Abanganan: Boarding House and Room Finder System for Dapitan City — Project Portfolio" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/navbar.css" />
+</head>
+<body>
+
+<div class="bg-static" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/logo.png" alt="" /></span>
+      <span class="brand-text">
+        <strong>ABANGANAN</strong>
+        <small>BOARDING HOUSE &amp; ROOM FINDER</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">HOME</a>
+        <a href="wbs.html">WBS</a>
+        <a href="activity-sequence.html">AS</a>
+        <a href="duration-estimation.html" class="active">ADE</a>
+        <a href="gantt-chart.html">GC</a>
+        <a href="team.html">TEAM</a>
+    </nav>
+
+    <div class="nav-end">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+<main class="page-view active">
+  <section class="page-hero">
+    <img class="ph-img" src="assets/hero.jpg" alt="Aerial view of Dapitan City" fetchpriority="high" />
+    <div class="ph-veil" aria-hidden="true"></div>
+
+    <div class="container ph-content">
+      <span class="ph-eyebrow">ABANGANAN &middot; 12-WEEK PLAN</span>
+      <h1 class="ph-title grad-text">ACTIVITY DURATION ESTIMATION</h1>
+      <p class="ph-intro">Activity Duration Estimation lists how long each of the eight major phases is expected to take, the key tasks it covers, and the phase that must be completed before it can start.</p>
+      <div class="ph-divider"></div>
+    </div>
+
+  </section>
+
+<section class="container" style="padding-bottom:3rem;">
+    <div class="ade-table-wrap" data-reveal>
+      <table class="ade-table">
+        <thead>
+          <tr>
+            <th>ID</th><th>Major Activity</th><th>Key Activities Included</th>
+            <th>Estimated Duration</th><th>Predecessor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="--accent:#22d3ee">
+            <td data-label="ID"><span class="ade-id">A1</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Planning and Requirements</span></td>
+            <td data-label="Key Activities">define project objectives and scope, identify stakeholders (room seekers, landlords, admin), analyze the current room-finding process, gather initial requirements from users, and more</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">—</span></td>
+          </tr>
+          <tr style="--accent:#38bdf8">
+            <td data-label="ID"><span class="ade-id">A2</span></td>
+            <td data-label="Major Activity"><span class="ade-act">UI/UX Design</span></td>
+            <td data-label="Key Activities">design the room seeker user flow, design the landlord user flow, design admin dashboard wireframes, design the map-based listing interface, and more</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A1</span></td>
+          </tr>
+          <tr style="--accent:#3b82f6">
+            <td data-label="ID"><span class="ade-id">A3</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Backend and Database Setup</span></td>
+            <td data-label="Key Activities">set up the Supabase project (database, auth, storage), design the database schema / ERD, set up user authentication and roles, set up storage for listing photos, and more</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A2</span></td>
+          </tr>
+          <tr style="--accent:#6366f1">
+            <td data-label="ID"><span class="ade-id">A4</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Frontend Development</span></td>
+            <td data-label="Key Activities">develop landlord registration and login, develop listing upload (photos, price, description, amenities), develop room seeker registration and login, develop listing browsing and detail pages, and more</td>
+            <td data-label="Duration"><span class="ade-dur star">4 weeks*</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A2</span></td>
+          </tr>
+          <tr style="--accent:#8b5cf6">
+            <td data-label="ID"><span class="ade-id">A5</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Map and Location Integration</span></td>
+            <td data-label="Key Activities">integrate Google Maps / Mapbox API, enable landlords to pin the exact property location, enable seekers to view listings on a map, implement distance calculation to a reference point</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A3, A4</span></td>
+          </tr>
+          <tr style="--accent:#a855f7">
+            <td data-label="ID"><span class="ade-id">A6</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Admin Dashboard</span></td>
+            <td data-label="Key Activities">develop listing moderation tools, develop landlord ownership verification, develop seeker-landlord issue resolution tools, develop the rental trend dashboard, and more</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A5</span></td>
+          </tr>
+          <tr style="--accent:#d946ef">
+            <td data-label="ID"><span class="ade-id">A7</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Testing and Revisions</span></td>
+            <td data-label="Key Activities">prepare the test plan and test cases, conduct unit and integration testing, conduct usability testing, conduct security testing, and more</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A6</span></td>
+          </tr>
+          <tr style="--accent:#06b6d4">
+            <td data-label="ID"><span class="ade-id">A8</span></td>
+            <td data-label="Major Activity"><span class="ade-act">Documentation and Pitch Prep</span></td>
+            <td data-label="Key Activities">prepare technical documentation, prepare the user guide, write the pitch video script and outline, prepare slides and visual aids, and more</td>
+            <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
+            <td data-label="Predecessor"><span class="ade-pred">A7</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ade-summary">
+      <div class="ade-box" data-reveal>
+        <div class="label">Estimated Project Duration</div>
+        <div class="value">12 weeks</div>
+      </div>
+      <div class="ade-note" data-reveal>
+        <span class="ni">💡</span>
+        <span><strong>Note:</strong> <strong>Frontend Development (A4)</strong> runs in parallel with <strong>Backend and Database Setup (A3)</strong>, starting the same week, to keep the 12-week timeline achievable.</span>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+<!-- =========================================================
+     VIEW: GC
+     ========================================================= -->
+</main>
+</div><!-- /.page-wrap -->
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="index.html">Boarding House &amp; Room Finder System for Dapitan City</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <span class="footer-group">Groupo HAPLO</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+
+</body>
+</html>

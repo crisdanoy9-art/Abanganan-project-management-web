@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Activity Sequencing — Abanganan</title>
+<meta name="description" content="Abanganan: Boarding House and Room Finder System for Dapitan City — Project Portfolio" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/navbar.css" />
+</head>
+<body>
+
+<div class="bg-static" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/logo.png" alt="" /></span>
+      <span class="brand-text">
+        <strong>ABANGANAN</strong>
+        <small>BOARDING HOUSE &amp; ROOM FINDER</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">HOME</a>
+        <a href="wbs.html">WBS</a>
+        <a href="activity-sequence.html" class="active">AS</a>
+        <a href="duration-estimation.html">ADE</a>
+        <a href="gantt-chart.html">GC</a>
+        <a href="team.html">TEAM</a>
+    </nav>
+
+    <div class="nav-end">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+<main class="page-view active">
+  <section class="page-hero">
+    <img class="ph-img" src="assets/hero.jpg" alt="Aerial view of Dapitan City" fetchpriority="high" />
+    <div class="ph-veil" aria-hidden="true"></div>
+
+    <div class="container ph-content">
+      <span class="ph-eyebrow">ABANGANAN &middot; 12-WEEK PLAN</span>
+      <h1 class="ph-title grad-text">ACTIVITY SEQUENCING</h1>
+      <p class="ph-intro">Activity Sequencing shows the order of the work across the 12-week plan &mdash; which phase has to finish before the next one can begin, and which phases run side by side to keep the timeline short.</p>
+      <div class="ph-divider"></div>
+    </div>
+
+  </section>
+
+<section class="container" style="padding-bottom:4rem;">
+    <div class="flow">
+      <div class="flow-terminal" data-reveal>START</div>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#22d3ee" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">1</span><div><h3>PLANNING AND REQUIREMENTS</h3><small>PHASE 01</small></div></div>
+        <ul class="flow-activities">
+          <li>Define project objectives and scope</li><li>Identify stakeholders (room seekers, landlords, admin)</li><li>Analyze the current room-finding process</li><li>Gather initial requirements from users</li><li>Define functional and non-functional requirements</li><li>Identify project risks</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#38bdf8" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">2</span><div><h3>UI/UX DESIGN</h3><small>PHASE 02</small></div></div>
+        <ul class="flow-activities">
+          <li>Design the room seeker user flow</li><li>Design the landlord user flow</li><li>Design admin dashboard wireframes</li><li>Design the map-based listing interface</li><li>Build Figma prototypes</li><li>Define the visual design system</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#3b82f6" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">3</span><div><h3>BACKEND AND DATABASE SETUP</h3><small>PHASE 03</small></div></div>
+        <ul class="flow-activities">
+          <li>Set up the Supabase project (database, auth, storage)</li><li>Design the database schema / ERD</li><li>Set up user authentication and roles</li><li>Set up storage for listing photos</li><li>Configure the API structure</li><li>Set up the GitHub repository and environments</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#6366f1" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">4</span><div><h3>FRONTEND DEVELOPMENT</h3><small>PHASE 04 &middot; PARALLEL WITH PHASE 03</small></div></div>
+        <ul class="flow-activities">
+          <li>Develop landlord registration and login</li><li>Develop listing upload (photos, price, description, amenities)</li><li>Develop room seeker registration and login</li><li>Develop listing browsing and detail pages</li><li>Develop filtering by barangay and price</li><li>Develop nearest-room search by reference point</li><li>Develop the private inquiry system</li><li>Develop landlord listing edit/take-down tools</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#8b5cf6" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">5</span><div><h3>MAP AND LOCATION INTEGRATION</h3><small>PHASE 05</small></div></div>
+        <ul class="flow-activities">
+          <li>Integrate Google Maps / Mapbox API</li><li>Enable landlords to pin the exact property location</li><li>Enable seekers to view listings on a map</li><li>Implement distance calculation to a reference point</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#a855f7" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">6</span><div><h3>ADMIN DASHBOARD</h3><small>PHASE 06</small></div></div>
+        <ul class="flow-activities">
+          <li>Develop listing moderation tools</li><li>Develop landlord ownership verification</li><li>Develop seeker-landlord issue resolution tools</li><li>Develop the rental trend dashboard</li><li>Develop reports on popular and underserved areas</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#d946ef" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">7</span><div><h3>TESTING AND REVISIONS</h3><small>PHASE 07</small></div></div>
+        <ul class="flow-activities">
+          <li>Prepare the test plan and test cases</li><li>Conduct unit and integration testing</li><li>Conduct usability testing</li><li>Conduct security testing</li><li>Fix identified defects</li><li>Gather feedback and revise</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+
+      <article class="flow-node" style="--accent:#06b6d4" data-reveal>
+        <div class="flow-node-head"><span class="flow-num">8</span><div><h3>DOCUMENTATION AND PITCH PREP</h3><small>PHASE 08</small></div></div>
+        <ul class="flow-activities">
+          <li>Prepare technical documentation</li><li>Prepare the user guide</li><li>Write the pitch video script and outline</li><li>Prepare slides and visual aids</li><li>Record and edit the pitch video</li><li>Final review and submission</li>
+        </ul>
+      </article>
+      <div class="flow-arrow" aria-hidden="true"><i></i></div>
+      <div class="flow-terminal end" data-reveal>END</div>
+    </div>
+  </section>
+</section>
+
+<!-- =========================================================
+     VIEW: ADE
+     ========================================================= -->
+</main>
+</div><!-- /.page-wrap -->
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="index.html">Boarding House &amp; Room Finder System for Dapitan City</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <span class="footer-group">Groupo HAPLO</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/sequence.js"></script>
+</body>
+</html>
