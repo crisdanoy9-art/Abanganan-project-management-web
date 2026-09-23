@@ -959,7 +959,7 @@ canvas { display: block; }
    ========================================================= */
 @media (max-width: 900px) {
   :root { --nav-h: 68px; }
-  /* navbar's own mobile-menu rules live in navbar.css */
+  /* navbar mobile-menu rules are merged in below, at the end of this file */
 
   .ph-img { object-position: center 46%; }
   .hero-stats { gap: 1.8rem; }
@@ -1188,7 +1188,7 @@ canvas { display: block; }
 .tech-modal {
   position: fixed; inset: 0; z-index: 500;
   display: flex; align-items: center; justify-content: center;
-  padding: calc(var(--nav-h) + 1rem) 1.2rem 1.2rem;
+  padding: 1.2rem;
   background: rgba(4,6,14,.72);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1410,22 +1410,13 @@ canvas { display: block; }
   font-size: .66rem; letter-spacing: .12em; text-transform: uppercase;
   color: #7d8ea9;
 }
-.member-modal-card {
-  width: min(92vw, 400px);
-  max-height: 100%; overflow-y: auto;
-  padding: clamp(2.3rem, 6vw, 2.7rem) clamp(1.1rem, 4vw, 1.7rem) clamp(1.4rem, 4vw, 1.8rem);
-}
-.member-modal-card .tech-modal-close { top: .65rem; right: .65rem; z-index: 3; }
+.member-modal-card { width: min(92vw, 420px); padding: 2.4rem 1.8rem 2rem; }
 
 .mm-avatar {
-  --mm-size: clamp(64px, 18vw, 104px);
-  width: var(--mm-size); height: var(--mm-size);
-  margin: 0 auto clamp(.7rem, 2.5vw, 1rem);
-  border-radius: calc(var(--mm-size) * .25);
-  position: relative; overflow: hidden;
+  width: 92px; height: 92px; margin: 0 auto 1.1rem;
+  border-radius: 26px; position: relative; overflow: hidden;
   display: grid; place-items: center;
-  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-  font-size: clamp(1.1rem, 4.2vw, 1.7rem); color: #fff;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.7rem; color: #fff;
   background: linear-gradient(135deg, var(--c1, var(--cyan)), var(--c2, var(--violet)));
   box-shadow: 0 0 34px rgba(34,211,238,.35), inset 0 1px 0 rgba(255,255,255,.35);
 }
@@ -1435,34 +1426,16 @@ canvas { display: block; }
   width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
   border-radius: inherit; display: block;
 }
-.mm-avatar .avatar-ring { inset: -5px; border-radius: calc(var(--mm-size) * .25 + 6px); }
+.mm-avatar .avatar-ring { inset: -5px; border-radius: 30px; }
 
 .member-modal-card .team-role { margin: 0 0 1rem; }
 .member-modal-card p { font-size: .92rem; line-height: 1.75; color: #c3d4ee; }
-
-/* ---- extra profile details: hidden on the card, shown only inside the modal ---- */
-.mm-details {
-  margin: 1.3rem 0 0; padding-top: 1.1rem; padding-bottom: .2rem;
-  border-top: 1px solid var(--stroke, rgba(255,255,255,.1));
-  display: grid; gap: .6rem;
-  text-align: left;
-}
-.mm-details .mm-row {
-  display: grid; grid-template-columns: 96px 1fr; gap: .6rem;
-  font-size: .82rem; line-height: 1.5;
-}
-.mm-details dt {
-  color: #7d8ea9; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .68rem;
-  padding-top: .1rem;
-}
-.mm-details dd { margin: 0; color: #e6edf9; }
-.mm-details .mm-row:last-child dd { font-style: italic; color: #c3d4ee; }
+.member-modal-card .team-fb { margin-top: 1.3rem; }
+.member-modal-card .team-socials { margin-top: 1.3rem; justify-content: center; }
 
 @media (max-width: 480px) {
-  .mm-details .mm-row { grid-template-columns: 78px 1fr; }
-}
-@media (max-width: 340px) {
-  .mm-details .mm-row { grid-template-columns: 1fr; gap: .1rem; }
+  .member-modal-card { padding: 2.1rem 1.3rem 1.7rem; }
+  .mm-avatar { width: 80px; height: 80px; font-size: 1.45rem; border-radius: 22px; }
 }
 
 
@@ -1490,3 +1463,167 @@ canvas { display: block; }
 
 /* the Dapitan photo is bright daylight — tone it down so the hero copy stays readable */
 .page-hero .ph-img { filter: saturate(.92) brightness(.82); }
+
+/* =========================================================
+   ABANGANAN — NAVBAR STYLESHEET
+   All header / brand / nav-links / hamburger styles live
+   here so the navbar can be edited on its own, separate
+   from the rest of the site (style.css).
+   Load this AFTER style.css on every page.
+   ========================================================= */
+
+/* ---------- NAVIGATION ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  height: var(--nav-h);
+  background: rgba(6,9,20,.22);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-bottom: 1px solid rgba(120,160,255,.10);
+  transition: background .45s ease, backdrop-filter .45s ease, border-color .45s ease;
+}
+
+/* becomes more solid once the user scrolls past the hero photo */
+.nav.scrolled {
+  background: rgba(6,9,20,.80);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border-bottom-color: var(--stroke);
+}
+.nav::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,.55), rgba(139,92,246,.55), transparent);
+}
+
+.nav-inner {
+  /* full-bleed: brand hugs the far left edge, nav-links + hamburger hug the far right edge */
+  width: 100%; max-width: none; margin-inline: 0;
+  padding-inline: clamp(1.25rem, 3.4vw, 3rem);
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+
+/* the whole menu is pushed to the far right edge of the bar */
+.nav-links { margin-left: auto; }
+.nav-end { margin-left: .35rem; }
+
+.brand { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
+
+.brand-mark {
+  width: 50px; height: 50px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 42%, rgba(34,211,238,.30), rgba(139,92,246,.20) 58%, transparent 74%);
+}
+.brand-mark img {
+  width: 100%; height: 100%; object-fit: contain; display: block;
+  filter: drop-shadow(0 2px 12px rgba(34,211,238,.6)) brightness(1.06) contrast(1.08);
+  image-rendering: -webkit-optimize-contrast;
+}
+.brand-mark.small { width: 36px; height: 36px; border-radius: 11px; }
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-size: .98rem; letter-spacing: .16em; }
+.brand-text small { font-size: .56rem; letter-spacing: .16em; color: var(--muted); }
+
+.nav-links { display: flex; align-items: center; gap: .6rem; }
+
+.nav-links a {
+  position: relative;
+  padding: .55rem .95rem;
+  font-size: .78rem; font-weight: 600; letter-spacing: .1em;
+  color: var(--muted);
+  border-radius: 10px;
+  transition: color .25s ease, background .25s ease;
+  cursor: pointer;
+}
+.nav-links a { text-shadow: 0 1px 8px rgba(0,0,0,.7); }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,.10); }
+.brand-text strong, .brand-text small { text-shadow: 0 1px 10px rgba(0,0,0,.8); }
+
+.nav-links a.active {
+  color: #fff;
+  background: rgba(59,130,246,.22);
+  box-shadow: 0 0 0 1px rgba(34,211,238,.35), 0 0 18px rgba(34,211,238,.28);
+}
+.nav-links a.active::after {
+  content: ""; position: absolute; left: 50%; bottom: 2px; transform: translateX(-50%);
+  width: 22px; height: 2px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+/* right side of the header: hamburger (mobile only) */
+.nav-end { display: flex; align-items: center; gap: .7rem; flex: none; }
+
+.hamburger {
+  display: none; width: 44px; height: 44px;
+  flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  border-radius: 12px; border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.04);
+}
+.hamburger span {
+  display: block; width: 20px; height: 2px; border-radius: 99px;
+  background: var(--text); transition: transform .3s ease, opacity .3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* =========================================================
+   NAVBAR — RESPONSIVE (autofit across gadgets)
+   Every breakpoint below only touches the navbar itself —
+   the mobile dropdown menu, hamburger and brand sizing.
+   ========================================================= */
+
+/* tablet: mobile dropdown menu kicks in */
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: .2rem;
+    padding: 1rem 1.2rem 1.6rem;
+    background: rgba(6,9,20,.97);
+    backdrop-filter: blur(22px);
+    border-bottom: 1px solid var(--stroke-2);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.95);
+    transform: translateY(-120%);
+    opacity: 0; visibility: hidden;
+    transition: transform .4s cubic-bezier(.2,.8,.3,1), opacity .3s ease, visibility .3s ease;
+    max-height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; visibility: visible; }
+  /* nav-links is fixed/out-of-flow on mobile, so nav-end (hamburger) sits at the far right on its own */
+  .nav-links { margin-left: 0; }
+  .nav-end { margin-left: auto; }
+  .nav-links a { padding: .9rem 1rem; font-size: .85rem; border-radius: 12px; }
+  .nav-links a.active::after { display: none; }
+
+  .brand-mark { width: 40px; height: 40px; }
+  .nav-end { gap: .55rem; }
+}
+
+/* small tablet / large phone */
+@media (max-width: 720px) {
+  .nav-inner { gap: .7rem; }
+  .brand { gap: .55rem; }
+  .brand-mark { width: 38px; height: 38px; }
+  .brand-text small { display: none; }
+  .brand-text strong { font-size: .86rem; }
+}
+
+/* phone */
+@media (max-width: 480px) {
+  .brand-text strong { font-size: .8rem; letter-spacing: .12em; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 11px; }
+  .hamburger { width: 40px; height: 40px; }
+  .nav-end { gap: .45rem; }
+}
+
+/* very small phones — drop the wordmark so the two logos still fit */
+@media (max-width: 370px) {
+  .brand-text { display: none; }
+  .nav-inner { gap: .5rem; }
+}
