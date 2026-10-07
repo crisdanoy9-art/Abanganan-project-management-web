@@ -918,7 +918,7 @@ canvas { display: block; }
   border-radius: 10px;
   display: flex; align-items: center; padding: 0 .8rem;
   font-size: .68rem; font-weight: 700; letter-spacing: .05em; color: #fff;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap; overflow: visible;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   background: linear-gradient(120deg, var(--c1), var(--c2));
   border: 1px solid rgba(255,255,255,.12);
@@ -927,6 +927,16 @@ canvas { display: block; }
   transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
   position: relative;
   transform-origin: left center;
+}
+.g-bar .bar-text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Space Grotesk', monospace, sans-serif;
+  letter-spacing: .06em;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  display: inline-block;
 }
 
 /* soft gentle shine that drifts across each bar */
