@@ -71,75 +71,134 @@
           <tr style="--accent:#22d3ee">
             <td data-label="ID"><span class="ade-id">A1</span></td>
             <td data-label="Major Activity"><span class="ade-act">Planning and Requirements</span></td>
-            <td data-label="Key Activities">define project objectives and scope, identify stakeholders (room seekers, landlords, admin), analyze the current room-finding process, gather initial requirements from users, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Define project objectives and scope</li>
+                <li>Identify stakeholders (room seekers, landlords, admin)</li>
+                <li>Analyze the current room-finding process</li>
+                <li>Gather initial requirements from users</li>
+                <li>Define functional and non-functional requirements</li>
+                <li>Identify project risks and mitigation plans</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">—</span></td>
           </tr>
           <tr style="--accent:#38bdf8">
             <td data-label="ID"><span class="ade-id">A2</span></td>
             <td data-label="Major Activity"><span class="ade-act">UI/UX Design</span></td>
-            <td data-label="Key Activities">design the room seeker user flow, design the landlord user flow, design admin dashboard wireframes, design the map-based listing interface, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Design the room seeker user flow</li>
+                <li>Design the landlord listing & management flow</li>
+                <li>Design admin dashboard wireframes</li>
+                <li>Design the interactive map-based listing interface</li>
+                <li>Build interactive Figma prototypes</li>
+                <li>Define the visual design system & components</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A1</span></td>
           </tr>
           <tr style="--accent:#3b82f6">
             <td data-label="ID"><span class="ade-id">A3</span></td>
             <td data-label="Major Activity"><span class="ade-act">Backend and Database Setup</span></td>
-            <td data-label="Key Activities">set up the Supabase project (database, auth, storage), design the database schema / ERD, set up user authentication and roles, set up storage for listing photos, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Set up the Supabase project (database, auth, storage)</li>
+                <li>Design database schema & Entity Relationship Diagram (ERD)</li>
+                <li>Set up user authentication and role-based permissions</li>
+                <li>Configure secure storage buckets for listing photos</li>
+                <li>Establish REST/GraphQL API structure & security rules</li>
+                <li>Set up GitHub repository, branches & CI/CD environments</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A2</span></td>
           </tr>
           <tr style="--accent:#6366f1">
             <td data-label="ID"><span class="ade-id">A4</span></td>
             <td data-label="Major Activity"><span class="ade-act">Frontend Development</span></td>
-            <td data-label="Key Activities">develop landlord registration and login, develop listing upload (photos, price, description, amenities), develop room seeker registration and login, develop listing browsing and detail pages, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Develop landlord registration, login & profile portal</li>
+                <li>Develop listing upload module (photos, price, description, amenities)</li>
+                <li>Develop room seeker registration, login & saved listings</li>
+                <li>Develop listing browsing and responsive detail pages</li>
+                <li>Develop smart filtering by barangay, price & amenities</li>
+                <li>Develop nearest-room search relative to reference points</li>
+                <li>Develop direct private messaging & inquiry system</li>
+                <li>Develop landlord listing management (edit, mark occupied, take-down)</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur star">4 weeks*</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A2</span></td>
           </tr>
           <tr style="--accent:#8b5cf6">
             <td data-label="ID"><span class="ade-id">A5</span></td>
             <td data-label="Major Activity"><span class="ade-act">Map and Location Integration</span></td>
-            <td data-label="Key Activities">integrate Google Maps / Mapbox API, enable landlords to pin the exact property location, enable seekers to view listings on a map, implement distance calculation to a reference point</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Integrate Google Maps / Mapbox interactive map SDK</li>
+                <li>Enable landlords to pin exact property GPS coordinates</li>
+                <li>Enable seekers to view and explore all listings on map</li>
+                <li>Implement automated distance & walking time calculation</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A3, A4</span></td>
           </tr>
           <tr style="--accent:#a855f7">
             <td data-label="ID"><span class="ade-id">A6</span></td>
             <td data-label="Major Activity"><span class="ade-act">Admin Dashboard</span></td>
-            <td data-label="Key Activities">develop listing moderation tools, develop landlord ownership verification, develop seeker-landlord issue resolution tools, develop the rental trend dashboard, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Develop boarding house listing moderation & approval tools</li>
+                <li>Develop landlord identity and property ownership verification</li>
+                <li>Develop seeker-landlord inquiry dispute resolution tools</li>
+                <li>Develop rental market trend and pricing analytics dashboard</li>
+                <li>Generate reports on popular, high-demand, and underserved areas</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A5</span></td>
           </tr>
           <tr style="--accent:#d946ef">
             <td data-label="ID"><span class="ade-id">A7</span></td>
             <td data-label="Major Activity"><span class="ade-act">Testing and Revisions</span></td>
-            <td data-label="Key Activities">prepare the test plan and test cases, conduct unit and integration testing, conduct usability testing, conduct security testing, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Prepare comprehensive test plan and edge test cases</li>
+                <li>Conduct unit, integration, and end-to-end testing</li>
+                <li>Conduct usability testing with Dapitan students & landlords</li>
+                <li>Perform security, authentication, and vulnerability audits</li>
+                <li>Fix identified bugs and optimize performance</li>
+                <li>Gather stakeholder feedback and deploy revisions</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A6</span></td>
           </tr>
           <tr style="--accent:#06b6d4">
             <td data-label="ID"><span class="ade-id">A8</span></td>
             <td data-label="Major Activity"><span class="ade-act">Documentation and Pitch Prep</span></td>
-            <td data-label="Key Activities">prepare technical documentation, prepare the user guide, write the pitch video script and outline, prepare slides and visual aids, and more</td>
+            <td data-label="Key Activities">
+              <ul class="ade-tasks">
+                <li>Prepare comprehensive technical architecture documentation</li>
+                <li>Prepare user handbook and onboarding guide for landlords & seekers</li>
+                <li>Write pitch video script and product demonstration narrative</li>
+                <li>Design executive slide deck and visual presentation aids</li>
+                <li>Record, edit, and produce final pitch presentation video</li>
+                <li>Conduct final project audit and submit portfolio deliverables</li>
+              </ul>
+            </td>
             <td data-label="Duration"><span class="ade-dur">2 weeks</span></td>
             <td data-label="Predecessor"><span class="ade-pred">A7</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <div class="ade-summary">
-      <div class="ade-box" data-reveal>
-        <div class="label">Estimated Project Duration</div>
-        <div class="value">12 weeks</div>
-      </div>
-      <div class="ade-note" data-reveal>
-        <span class="ni">💡</span>
-        <span><strong>Note:</strong> <strong>Frontend Development (A4)</strong> runs in parallel with <strong>Backend and Database Setup (A3)</strong>, starting the same week, to keep the 12-week timeline achievable.</span>
-      </div>
-    </div>
   </section>
-</section>
 
 
 <!-- =========================================================
