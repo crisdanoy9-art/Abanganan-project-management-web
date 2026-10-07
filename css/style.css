@@ -679,10 +679,13 @@ canvas { display: block; }
 }
 
 .flow-arrow {
-  display: grid;
-  place-items: center;
-  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
   position: relative;
+  width: 100%;
 }
 .flow-arrow::before {
   content: "";
@@ -690,13 +693,11 @@ canvas { display: block; }
   top: 0;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
   width: 2px;
-  background: linear-gradient(180deg, transparent, rgba(34,211,238,.7), rgba(139,92,246,.7), transparent);
-  background-size: 100% 220%;
-  animation: flowDown 2.2s linear infinite;
+  margin-left: -1px;
+  background: linear-gradient(180deg, rgba(34,211,238,.85), rgba(139,92,246,.85));
+  box-shadow: 0 0 8px rgba(34,211,238,.45);
 }
-@keyframes flowDown { 0% { background-position: 0 -120%; } 100% { background-position: 0 120%; } }
 .flow-arrow i {
   position: relative;
   z-index: 2;
@@ -705,10 +706,9 @@ canvas { display: block; }
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 9px solid var(--cyan);
-  filter: drop-shadow(0 0 8px var(--cyan));
-  animation: arrowPulse 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px var(--cyan));
+  display: block;
 }
-@keyframes arrowPulse { 0%,100% { opacity: .45; transform: translateY(-2px);} 50% { opacity: 1; transform: translateY(2px);} }
 
 .flow-terminal {
   text-align: center;
@@ -858,7 +858,7 @@ canvas { display: block; }
 .gantt-scroll { overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; }
 .gantt-scroll::-webkit-scrollbar { height: 9px; }
 .gantt-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,.04); }
-.gantt-scroll::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #2dd4bf, #facc15 50%, #f87171); border-radius: 99px; }
+.gantt-scroll::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #06b6d4, #6366f1 50%, #a855f7); border-radius: 99px; }
 
 .gantt-inner { min-width: 820px; }
 
@@ -870,12 +870,12 @@ canvas { display: block; }
 
 .gantt-head {
   border-bottom: 1px solid var(--stroke-2);
-  background: linear-gradient(120deg, rgba(45,212,191,.12), rgba(250,204,21,.08) 50%, rgba(248,113,113,.10));
+  background: linear-gradient(120deg, rgba(6,182,212,.10), rgba(99,102,241,.08));
   position: sticky; top: 0; z-index: 6;
 }
 .gantt-head .g-label {
   padding: 1rem 1.1rem;
-  font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: #5eead4;
+  font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: #38bdf8;
   border-right: 1px solid var(--stroke);
   display: flex; align-items: center;
   position: sticky; left: 0; z-index: 7;
@@ -891,7 +891,7 @@ canvas { display: block; }
 
 .gantt-row { border-bottom: 1px solid rgba(120,160,255,.08); transition: background .3s ease; }
 .gantt-row:last-child { border-bottom: none; }
-.gantt-row:hover { background: rgba(250,204,21,.05); }
+.gantt-row:hover { background: rgba(56,189,248,.04); }
 
 .g-task {
   padding: 1rem 1.1rem;
@@ -921,18 +921,19 @@ canvas { display: block; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   background: linear-gradient(120deg, var(--c1), var(--c2));
-  box-shadow: 0 8px 22px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.28), 0 0 22px var(--c1);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 4px 14px -3px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.22);
   cursor: pointer;
-  transition: transform .45s ease, box-shadow .45s ease, filter .45s ease;
+  transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
   position: relative;
   transform-origin: left center;
 }
 
-/* slow shine that drifts across each bar */
+/* soft gentle shine that drifts across each bar */
 .g-bar::before {
   content: ""; position: absolute; top: 0; bottom: 0; left: 0;
   width: 42%; border-radius: 10px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.30), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
   transform: translateX(-160%);
   animation: barShine 9s cubic-bezier(.4,0,.25,1) infinite;
   animation-delay: var(--d, 0s);
@@ -945,14 +946,14 @@ canvas { display: block; }
   100% { transform: translateX(340%); }
 }
 
-/* slow gentle breathing glow */
+/* subtle, eye-friendly ambient breathing */
 .g-bar {
   animation: barGlow 7.5s ease-in-out infinite;
   animation-delay: var(--d, 0s);
 }
 @keyframes barGlow {
-  0%, 100% { box-shadow: 0 8px 22px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.28), 0 0 16px -2px var(--c1); }
-  50%      { box-shadow: 0 10px 26px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px 2px var(--c1); }
+  0%, 100% { box-shadow: 0 4px 14px -3px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.22), 0 0 8px -2px var(--c1); }
+  50%      { box-shadow: 0 6px 18px -4px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.28), 0 0 14px 0 var(--c1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -960,13 +961,13 @@ canvas { display: block; }
 }
 .g-bar::after {
   content: ""; position: absolute; inset: 0; border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255,255,255,.22), transparent 55%);
+  background: linear-gradient(180deg, rgba(255,255,255,.18), transparent 55%);
   pointer-events: none;
 }
 .g-bar:hover {
-  transform: translateY(-3px) scale(1.015);
-  filter: brightness(1.16) saturate(1.1);
-  box-shadow: 0 16px 36px -10px rgba(0,0,0,.95), 0 0 34px var(--c1);
+  transform: translateY(-2px) scale(1.01);
+  filter: brightness(1.1);
+  box-shadow: 0 10px 24px -6px rgba(0,0,0,.9), 0 0 18px var(--c1);
   animation-play-state: paused;
   z-index: 4;
 }
