@@ -1873,3 +1873,214 @@ canvas { display: block; }
   .brand-text { display: none; }
   .nav-inner { gap: .5rem; }
 }
+/* =========================================================
+   TEAM ORGANIZATION (Lab Exercise 3)
+   assessment / roles / org chart / responsibilities
+   ========================================================= */
+.team-org { padding-top: clamp(2.5rem, 6vw, 4rem); padding-bottom: 1rem; }
+
+/* tables reuse .ade-table; undo its fixed column rules */
+.rt-table thead th:first-child,
+.rt-table thead th:nth-child(n) { width: auto; min-width: 0; text-align: left; white-space: normal; }
+.rt-table thead th:nth-child(1) { min-width: 190px; }
+.rt-table tbody td:first-child,
+.rt-table tbody td:last-child { text-align: left; }
+.rt-assess thead th:nth-child(2) { min-width: 240px; }
+.rt-assess thead th:nth-child(3) { min-width: 210px; }
+.rt-assess thead th:nth-child(4) { min-width: 170px; }
+.rt-assess thead th:nth-child(5) { min-width: 240px; }
+.rt-roles thead th:nth-child(n+2), .rt-acts thead th:nth-child(n+2) { min-width: 200px; }
+
+.rt-people { display: flex; flex-direction: column; gap: .5rem; }
+.rt-person { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; color: #fff; font-size: .86rem; line-height: 1.3; }
+.rt-dot {
+  flex: 0 0 auto; width: 30px; height: 30px; border-radius: 10px; overflow: hidden;
+  background: linear-gradient(135deg, var(--c1, var(--cyan)), var(--c2, var(--violet)));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--c1, var(--cyan)) 45%, transparent);
+}
+.rt-dot img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+
+.rt-role {
+  display: inline-block; padding: .3rem .7rem; border-radius: 8px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em; line-height: 1.4;
+  color: var(--cyan); border: 1px solid rgba(34,211,238,.35); background: rgba(34,211,238,.09);
+}
+.rt-role.strong { color: #fff; font-size: .86rem; letter-spacing: .01em; border-color: color-mix(in srgb, var(--accent, var(--cyan)) 55%, transparent); background: color-mix(in srgb, var(--accent, var(--cyan)) 16%, transparent); }
+.rt-tag {
+  display: block; margin-top: .55rem; width: fit-content;
+  font-size: .68rem; font-weight: 600; letter-spacing: .06em; color: var(--violet);
+  padding: .18rem .6rem; border-radius: 99px; border: 1px solid rgba(139,92,246,.4); background: rgba(139,92,246,.1);
+}
+.rt-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
+.rt-list li { position: relative; padding-left: 1rem; font-size: .84rem; line-height: 1.5; color: #c7d6f0; }
+.rt-list li::before {
+  content: ""; position: absolute; left: 0; top: .55em; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent, var(--cyan)); box-shadow: 0 0 7px var(--accent, var(--cyan));
+}
+
+/* ---- org chart ---- */
+.oc { display: flex; flex-direction: column; align-items: center; padding: 1.2rem 0 .5rem; --line: rgba(120,160,255,.45); }
+.oc-top { display: flex; justify-content: center; width: 100%; }
+.oc-stem { width: 2px; height: 34px; background: var(--line); }
+.oc-row {
+  position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+  width: 100%; padding-top: 34px;
+}
+/* horizontal bus across the middle of the 4 cards */
+.oc-row::before {
+  content: ""; position: absolute; top: 0; left: calc(12.5% - .15rem); right: calc(12.5% - .15rem);
+  height: 2px; background: var(--line);
+}
+.oc-row .oc-card::before {
+  content: ""; position: absolute; top: -34px; left: 50%; width: 2px; height: 34px; background: var(--line);
+}
+.oc-card {
+  position: relative; padding: 1.1rem 1.1rem 1.2rem; border-radius: 18px; text-align: center;
+  background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border: 1px solid color-mix(in srgb, var(--c1) 45%, transparent);
+  box-shadow: var(--shadow), 0 0 28px color-mix(in srgb, var(--c1) 14%, transparent);
+  backdrop-filter: blur(16px);
+}
+.oc-card.oc-pm { width: min(100%, 380px); border-width: 2px; }
+.oc-card h4 {
+  margin: -1.1rem -1.1rem .9rem; padding: .6rem .7rem; border-radius: 16px 16px 0 0;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; line-height: 1.35; color: #fff;
+  background: linear-gradient(120deg, var(--c1), var(--c2));
+}
+.oc-photo {
+  width: 84px; height: 84px; margin: 0 auto .7rem; border-radius: 50%; overflow: hidden; position: relative;
+  display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.4rem; color: #fff;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  border: 3px solid color-mix(in srgb, var(--c1) 70%, #fff);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--c1) 45%, transparent);
+}
+.oc-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; z-index: 2; }
+.oc-card > strong { display: block; margin-bottom: .7rem; color: #fff; font-size: .98rem; }
+.oc-card .rt-list { text-align: left; --accent: var(--c1); }
+.oc-card .rt-list li { font-size: .8rem; }
+
+@media (max-width: 1000px) {
+  .oc-row { grid-template-columns: repeat(2, 1fr); padding-top: 34px; }
+  .oc-row::before { left: 25%; right: 25%; }
+  .oc-row .oc-card:nth-child(odd)::before, .oc-row .oc-card:nth-child(even)::before { display: none; }
+  .oc-row .oc-card:nth-child(1)::before, .oc-row .oc-card:nth-child(2)::before { display: block; }
+  .oc-row .oc-card:nth-child(1)::before { left: 50%; }
+}
+@media (max-width: 640px) {
+  .oc-row { grid-template-columns: 1fr; gap: 1rem; padding-top: 0; padding-left: 18px; }
+  .oc-row::before { top: 0; bottom: 30px; left: 0; right: auto; width: 2px; height: auto; }
+  .oc-row .oc-card::before, .oc-row .oc-card:nth-child(n)::before { display: block !important; top: 50% !important; left: -18px !important; width: 18px !important; height: 2px !important; }
+  .oc-stem { height: 24px; }
+}
+
+/* =========================================================
+   ROLE ASSIGNMENTS on WBS / ADE / GANTT (Lab Exercise 3)
+   ========================================================= */
+.own { display: inline-flex; flex-direction: column; gap: .3rem; }
+.own-row { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem; }
+.own-l { font-size: .52rem; font-weight: 700; letter-spacing: .14em; color: var(--cyan); min-width: 3.1rem; }
+.own-av {
+  flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; overflow: hidden; display: inline-block;
+  background: linear-gradient(135deg, var(--c1, var(--cyan)), var(--c2, var(--violet)));
+  border: 1.5px solid color-mix(in srgb, var(--c1, var(--cyan)) 70%, #fff);
+}
+.own-av img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+.own-av + .own-av { margin-left: -8px; }
+.own-n { font-size: .74rem; font-weight: 700; color: #fff; }
+.own-names { font-size: .74rem; color: #c7d6f0; margin-left: .2rem; }
+
+.wbs-owner {
+  margin-top: 8px; padding: .5rem .55rem; border-radius: 8px; text-align: left;
+  background: rgba(255,255,255,.04); border: 1px solid var(--stroke);
+}
+.ade-team { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; }
+.rt-table + .x, .ade-table thead th:nth-child(6) { min-width: 220px; text-align: left; }
+.ade-table tbody td:nth-child(6) { text-align: left; }
+.g-task .t-owner { margin-top: .35rem; }
+@media (max-width: 720px) { .g-task .own-l { min-width: 2.7rem; } }
+
+/* role strip inside Activity Sequencing flow nodes */
+.flow-owner { margin: .2rem 0 .9rem; padding: .55rem .7rem; border-radius: 10px; background: rgba(255,255,255,.04); border: 1px solid var(--stroke); }
+
+/* =========================================================
+   TEAM ASSESSMENT (home page) — layout + table fixes
+   ========================================================= */
+.assess-note { margin-bottom: 1.4rem; }
+.assess-note > p { max-width: 80ch; }
+.wp-grid {
+  list-style: none; margin: 1.3rem 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem;
+}
+.wp-grid li {
+  display: flex; flex-direction: column; gap: .25rem;
+  padding: .85rem 1rem; border-radius: 12px;
+  border: 1px solid var(--stroke); background: rgba(255,255,255,.03);
+}
+.wp-grid strong { color: var(--cyan); font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; }
+.wp-grid span { color: #c7d6f0; font-size: .86rem; line-height: 1.5; }
+@media (max-width: 900px) { .wp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .wp-grid { grid-template-columns: 1fr; } }
+
+/* one header gradient across the whole row (no seams), aligned columns */
+.rt-assess thead { background: linear-gradient(120deg, rgba(34,211,238,.16), rgba(139,92,246,.13)); }
+.rt-assess thead th { background: transparent; vertical-align: middle; padding: 1.1rem 1.1rem; letter-spacing: .14em; line-height: 1.5; }
+.rt-assess tbody td { overflow-wrap: anywhere; word-break: normal; }
+.rt-assess tbody tr:last-child td { padding-bottom: 1.6rem; }
+.rt-assess .rt-list li { overflow-wrap: anywhere; }
+@media (min-width: 721px) {
+  .rt-assess { table-layout: fixed; min-width: 1040px; }
+  .rt-assess thead th:nth-child(1) { width: 17%; min-width: 0; }
+  .rt-assess thead th:nth-child(2) { width: 23%; min-width: 0; }
+  .rt-assess thead th:nth-child(3) { width: 23%; min-width: 0; }
+  .rt-assess thead th:nth-child(4) { width: 16%; min-width: 0; }
+  .rt-assess thead th:nth-child(5) { width: 21%; min-width: 0; }
+}
+
+/* highlighted keywords */
+.hl {
+  color: var(--cyan); font-weight: 600;
+  background: linear-gradient(180deg, transparent 62%, rgba(34,211,238,.18) 62%);
+  padding: 0 .12em; border-radius: 3px;
+}
+
+/* =========================================================
+   ADE — Responsible Team (bigger, clearer) + centered cells
+   scoped to .ade-team so the Gantt chart owners stay unchanged
+   ========================================================= */
+.ade-team { gap: .8rem; }
+.ade-team .own { gap: .7rem; }
+.ade-team .own-row { gap: .5rem; flex-wrap: nowrap; align-items: center; }
+.ade-team .own-l { font-size: .64rem; letter-spacing: .16em; min-width: 4.3rem; }
+.ade-team .own-av { width: 36px; height: 36px; border-width: 2px; }
+.ade-team .own-av + .own-av { margin-left: -12px; }
+.ade-team .own-n { font-size: 1rem; }
+.ade-team .own-names { font-size: .92rem; font-weight: 600; color: #e3ecff; margin-left: .35rem; line-height: 1.3; }
+.ade-team .rt-role { font-size: .78rem; margin-top: .15rem; }
+
+@media (max-width: 720px) {
+  .ade-team .own-l { min-width: 3.8rem; }
+  .ade-team .own-av { width: 32px; height: 32px; }
+  .ade-team .own-row { flex-wrap: wrap; }
+}
+
+/* vertically center ID / Major Activity / Duration / Predecessor in the row */
+@media (min-width: 721px) {
+  .ade-table tbody td[data-label="ID"],
+  .ade-table tbody td[data-label="Major Activity"],
+  .ade-table tbody td[data-label="Duration"],
+  .ade-table tbody td[data-label="Predecessor"] { vertical-align: middle; }
+
+  /* Duration + Predecessor: centered under their headers */
+  .ade-table tbody td[data-label="Duration"],
+  .ade-table tbody td[data-label="Predecessor"] { text-align: center; }
+  .ade-table:has(.ade-team) thead th:nth-child(4),
+  .ade-table:has(.ade-team) thead th:nth-child(5) { text-align: center; }
+}
+
+/* Responsible Team column: centered (header + content), vertically middle */
+@media (min-width: 721px) {
+  .ade-table:has(.ade-team) thead th:nth-child(6) { text-align: center; }
+  .ade-table:has(.ade-team) tbody td:nth-child(6) { text-align: center; vertical-align: middle; }
+  .ade-team { width: fit-content; max-width: 100%; margin-inline: auto; }
+  .ade-team .rt-role { align-self: center; }
+}
