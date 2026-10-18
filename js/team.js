@@ -103,16 +103,26 @@
   }
 
   function read(cardEl) {
-    var photoEl2 = cardEl.querySelector('.avatar-photo');
-    var initEl = cardEl.querySelector('.avatar-initials');
+    var photoEl2 = cardEl.querySelector('.avatar-photo, .oc-photo img');
+    var initEl = cardEl.querySelector('.avatar-initials, .oc-photo span');
     var fb = cardEl.querySelector('.team-social-link.fb');
     var gh = cardEl.querySelector('.team-social-link.gh');
     var gg = cardEl.querySelector('.team-social-link.gg');
     var cs = getComputedStyle(cardEl);
+    var name = (cardEl.querySelector('h3, strong') || {}).textContent || '';
+    var role = (cardEl.querySelector('.team-role, h4') || {}).textContent || '';
+    var descEl = cardEl.querySelector('p');
+    var desc = descEl ? descEl.textContent : (cardEl.dataset.desc || '');
+    if (!desc && cardEl.querySelector('.rt-list')) {
+      var items = cardEl.querySelectorAll('.rt-list li');
+      var parts = [];
+      items.forEach(function (li) { parts.push(li.textContent.trim()); });
+      desc = parts.join(' · ');
+    }
     return {
-      name: (cardEl.querySelector('h3') || {}).textContent || '',
-      role: (cardEl.querySelector('.team-role') || {}).textContent || '',
-      desc: (cardEl.querySelector('p') || {}).textContent || '',
+      name: name,
+      role: role,
+      desc: desc,
       initials: initEl ? initEl.textContent : '',
       photo: photoEl2 ? photoEl2.getAttribute('src') : '',
       school: cardEl.dataset.school || '',
@@ -120,16 +130,16 @@
       course: cardEl.dataset.course || '',
       hilig: cardEl.dataset.hilig || '',
       motto: cardEl.dataset.motto || '',
-      fb: fb ? fb.getAttribute('href') : '#',
-      gh: gh ? gh.getAttribute('href') : '#',
-      gg: gg ? gg.getAttribute('href') : '#',
+      fb: fb ? fb.getAttribute('href') : (cardEl.dataset.fb || '#'),
+      gh: gh ? gh.getAttribute('href') : (cardEl.dataset.gh || '#'),
+      gg: gg ? gg.getAttribute('href') : (cardEl.dataset.gg || '#'),
       c1: cs.getPropertyValue('--c1').trim() || '#22d3ee',
       c2: cs.getPropertyValue('--c2').trim() || '#8b5cf6'
     };
   }
 
   function init() {
-    var cards = document.querySelectorAll('.team-card');
+    var cards = document.querySelectorAll('.team-card, .oc-card.is-tappable');
     if (!cards.length) return;
     buildModal();
 

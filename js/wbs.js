@@ -58,9 +58,11 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const heads = [];
+    const owners = [];
     const subGroups = [];
     cols.forEach((col) => {
       heads.push(col.querySelector('.wbs-col-head'));
+      owners.push(col.querySelector('.wbs-owner'));
       subGroups.push(Array.from(col.querySelectorAll('.wbs-sub')));
     });
 
@@ -70,6 +72,7 @@
       if (trunk) gsap.set(trunk, { scaleY: 1 });
       if (spine) gsap.set(spine, { scaleX: 1 });
       heads.forEach((h) => h && gsap.set(h, { opacity: 1, y: 0 }));
+      owners.forEach((o) => o && gsap.set(o, { opacity: 1, y: 0, scale: 1 }));
       subGroups.forEach((subs) => gsap.set(subs, { opacity: 1, y: 0 }));
       return;
     }
@@ -79,6 +82,7 @@
     if (trunk) gsap.set(trunk, { scaleY: 0, transformOrigin: 'top center' });
     if (spine) gsap.set(spine, { scaleX: 0, transformOrigin: 'left center' });
     heads.forEach((h) => h && gsap.set(h, { opacity: 0, y: 22 }));
+    owners.forEach((o) => o && gsap.set(o, { opacity: 0, y: 16, scale: 0.94 }));
     subGroups.forEach((subs) => gsap.set(subs, { opacity: 0, y: 18 }));
 
     function run() {
@@ -90,10 +94,12 @@
 
       cols.forEach((col, i) => {
         const head = heads[i];
+        const owner = owners[i];
         const subs = subGroups[i];
         const overlap = i === 0 ? '-=0.05' : '-=0.35';
 
         if (head) tl.to(head, { opacity: 1, y: 0, duration: 0.5 }, overlap);
+        if (owner) tl.to(owner, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, '-=0.22');
 
         if (subs.length) {
           /* the tasks in this column trickle downward, one after

@@ -156,6 +156,8 @@
       return;
     }
 
+    const tasks = document.querySelectorAll('.g-task');
+
     // Set initial state: NO scaleX (so text NEVER stretches!)
     // Uses clip-path inset from right to left
     gsap.set(bars, {
@@ -163,9 +165,15 @@
       opacity: 0,
       scaleX: 1
     });
+    if (tasks.length) {
+      gsap.set(tasks, { opacity: 0, x: -16 });
+    }
 
     const run = () => {
       const tl = gsap.timeline();
+      if (tasks.length) {
+        tl.to(tasks, { opacity: 1, x: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, 0);
+      }
       bars.forEach((bar, idx) => {
         const textEl = bar.querySelector('.bar-text');
         const targetText = textEl ? (textEl.dataset.originalText || textEl.textContent.trim()) : '';

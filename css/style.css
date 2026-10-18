@@ -1921,18 +1921,9 @@ canvas { display: block; }
 /* ---- org chart ---- */
 .oc { display: flex; flex-direction: column; align-items: center; padding: 1.2rem 0 .5rem; --line: rgba(120,160,255,.45); }
 .oc-top { display: flex; justify-content: center; width: 100%; }
-.oc-stem { width: 2px; height: 34px; background: var(--line); }
 .oc-row {
   position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
   width: 100%; padding-top: 34px;
-}
-/* horizontal bus across the middle of the 4 cards */
-.oc-row::before {
-  content: ""; position: absolute; top: 0; left: calc(12.5% - .15rem); right: calc(12.5% - .15rem);
-  height: 2px; background: var(--line);
-}
-.oc-row .oc-card::before {
-  content: ""; position: absolute; top: -34px; left: 50%; width: 2px; height: 34px; background: var(--line);
 }
 .oc-card {
   position: relative; padding: 1.1rem 1.1rem 1.2rem; border-radius: 18px; text-align: center;
@@ -1959,19 +1950,6 @@ canvas { display: block; }
 .oc-card .rt-list { text-align: left; --accent: var(--c1); }
 .oc-card .rt-list li { font-size: .8rem; }
 
-@media (max-width: 1000px) {
-  .oc-row { grid-template-columns: repeat(2, 1fr); padding-top: 34px; }
-  .oc-row::before { left: 25%; right: 25%; }
-  .oc-row .oc-card:nth-child(odd)::before, .oc-row .oc-card:nth-child(even)::before { display: none; }
-  .oc-row .oc-card:nth-child(1)::before, .oc-row .oc-card:nth-child(2)::before { display: block; }
-  .oc-row .oc-card:nth-child(1)::before { left: 50%; }
-}
-@media (max-width: 640px) {
-  .oc-row { grid-template-columns: 1fr; gap: 1rem; padding-top: 0; padding-left: 18px; }
-  .oc-row::before { top: 0; bottom: 30px; left: 0; right: auto; width: 2px; height: auto; }
-  .oc-row .oc-card::before, .oc-row .oc-card:nth-child(n)::before { display: block !important; top: 50% !important; left: -18px !important; width: 18px !important; height: 2px !important; }
-  .oc-stem { height: 24px; }
-}
 
 /* =========================================================
    ROLE ASSIGNMENTS on WBS / ADE / GANTT (Lab Exercise 3)
@@ -1983,24 +1961,55 @@ canvas { display: block; }
   flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; overflow: hidden; display: inline-block;
   background: linear-gradient(135deg, var(--c1, var(--cyan)), var(--c2, var(--violet)));
   border: 1.5px solid color-mix(in srgb, var(--c1, var(--cyan)) 70%, #fff);
+  position: relative;
+  transition: transform .22s cubic-bezier(.2,.8,.3,1), z-index .1s ease, box-shadow .22s ease;
 }
 .own-av img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
 .own-av + .own-av { margin-left: -8px; }
+.own-av:hover {
+  transform: scale(1.25) translateY(-1px);
+  z-index: 6;
+  box-shadow: 0 0 10px var(--cyan);
+}
 .own-n { font-size: .74rem; font-weight: 700; color: #fff; }
 .own-names { font-size: .74rem; color: #c7d6f0; margin-left: .2rem; }
 
 .wbs-owner {
   margin-top: 8px; padding: .5rem .55rem; border-radius: 8px; text-align: left;
   background: rgba(255,255,255,.04); border: 1px solid var(--stroke);
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.wbs-owner:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(34,211,238,.45);
+  box-shadow: 0 4px 14px rgba(0,0,0,.45), 0 0 14px rgba(34,211,238,.2);
 }
 .ade-team { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; }
 .rt-table + .x, .ade-table thead th:nth-child(6) { min-width: 220px; text-align: left; }
 .ade-table tbody td:nth-child(6) { text-align: left; }
-.g-task .t-owner { margin-top: .35rem; }
+.g-task .t-owner {
+  margin-top: .35rem;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.g-task:hover .t-owner {
+  border-color: rgba(34,211,238,.35);
+  box-shadow: 0 0 10px rgba(34,211,238,.18);
+}
 @media (max-width: 720px) { .g-task .own-l { min-width: 2.7rem; } }
 
 /* role strip inside Activity Sequencing flow nodes */
-.flow-owner { margin: .2rem 0 .9rem; padding: .55rem .7rem; border-radius: 10px; background: rgba(255,255,255,.04); border: 1px solid var(--stroke); }
+.flow-owner {
+  margin: .2rem 0 .9rem; padding: .55rem .7rem; border-radius: 10px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--stroke);
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.flow-owner:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(34,211,238,.45);
+  box-shadow: 0 4px 14px rgba(0,0,0,.45), 0 0 14px rgba(34,211,238,.2);
+}
 
 /* =========================================================
    TEAM ASSESSMENT (home page) — layout + table fixes
@@ -2083,4 +2092,259 @@ canvas { display: block; }
   .ade-table:has(.ade-team) tbody td:nth-child(6) { text-align: center; vertical-align: middle; }
   .ade-team { width: fit-content; max-width: 100%; margin-inline: auto; }
   .ade-team .rt-role { align-self: center; }
+}
+
+/* =========================================================
+   ORGANIZATIONAL CHART — connected lines, animation, mobile tree
+   ========================================================= */
+.oc { --oc-gap: 1.2rem; --oc-drop: 34px; --line: rgba(120,160,255,.55); }
+.oc-stem { width: 2px; height: var(--oc-drop); background: var(--line); transform-origin: top; }
+.oc-row { gap: var(--oc-gap); padding-top: var(--oc-drop); }
+
+/* every card draws its own stem (down) + its own slice of the horizontal bus,
+   so the lines always join no matter the column gap */
+.oc-row .oc-card::before,
+.oc-row .oc-card::after { content: ""; position: absolute; background: var(--line); pointer-events: none; }
+.oc-row .oc-card::before { top: calc(var(--oc-drop) * -1); left: 50%; margin-left: -1px; width: 2px; height: var(--oc-drop); transform-origin: top; }
+.oc-row .oc-card::after  { top: calc(var(--oc-drop) * -1); left: calc(var(--oc-gap) / -2); right: calc(var(--oc-gap) / -2); height: 2px; }
+.oc-row .oc-card:first-child::after { left: 50%; }
+.oc-row .oc-card:last-child::after  { right: 50%; }
+.oc-row .oc-card:nth-child(1)::after, .oc-row .oc-card:nth-child(2)::after { transform-origin: right center; }
+.oc-row .oc-card:nth-child(3)::after, .oc-row .oc-card:nth-child(4)::after { transform-origin: left center; }
+
+.oc-card { transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.3,1), translate .3s ease, box-shadow .3s ease; }
+.oc-card:hover { translate: 0 -5px; box-shadow: var(--shadow), 0 0 40px color-mix(in srgb, var(--c1) 30%, transparent); }
+.oc-photo { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c1) 55%, transparent), 0 0 20px color-mix(in srgb, var(--c1) 40%, transparent); }
+
+/* ---- entrance animation (JS adds .oc-ready, then .oc-in when scrolled into view) ---- */
+.oc-ready .oc-card { opacity: 0; transform: translateY(22px) scale(.95); }
+.oc-ready .oc-stem { transform: scaleY(0); }
+.oc-ready .oc-row .oc-card::before { transform: scaleY(0); }
+.oc-ready .oc-row .oc-card::after  { transform: scaleX(0); }
+
+.oc-in .oc-card, .oc-in .oc-stem,
+.oc-in .oc-row .oc-card::before, .oc-in .oc-row .oc-card::after { opacity: 1; transform: none; }
+.oc-in .oc-row .oc-card::before, .oc-in .oc-row .oc-card::after, .oc-in .oc-stem { transition: transform .4s ease; }
+
+/* desktop: PM -> stem -> bus grows from the center outward -> stems drop -> cards pop in */
+.oc-in .oc-pm { transition-delay: 0s; }
+.oc-in .oc-stem { transition-delay: .5s; }
+.oc-in .oc-row .oc-card:nth-child(2)::after, .oc-in .oc-row .oc-card:nth-child(3)::after { transition-delay: .85s; }
+.oc-in .oc-row .oc-card:nth-child(1)::after, .oc-in .oc-row .oc-card:nth-child(4)::after { transition-delay: 1.2s; }
+.oc-in .oc-row .oc-card:nth-child(2)::before, .oc-in .oc-row .oc-card:nth-child(3)::before { transition-delay: 1.2s; }
+.oc-in .oc-row .oc-card:nth-child(1)::before, .oc-in .oc-row .oc-card:nth-child(4)::before { transition-delay: 1.55s; }
+.oc-in .oc-row .oc-card:nth-child(2), .oc-in .oc-row .oc-card:nth-child(3) { transition-delay: 1.45s, 1.45s, 0s, 0s; }
+.oc-in .oc-row .oc-card:nth-child(1), .oc-in .oc-row .oc-card:nth-child(4) { transition-delay: 1.8s, 1.8s, 0s, 0s; }
+
+/* soft glow pulse travelling through the lines once everything is drawn */
+@keyframes ocGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(34,211,238,0); }
+  50%      { box-shadow: 0 0 10px rgba(34,211,238,.75); }
+}
+.oc-in .oc-stem, .oc-in .oc-row .oc-card::before, .oc-in .oc-row .oc-card::after {
+  animation: ocGlow 3.4s ease-in-out 2.8s infinite;
+}
+
+/* ---- fluid desktop navbar for 7 items (HOME, WBS, AS, ADE, GC, POC, TEAM) ---- */
+@media (min-width: 901px) and (max-width: 1220px) {
+  .nav-inner { padding-inline: 1.25rem; gap: .5rem; }
+  .brand { gap: .5rem; }
+  .brand-text strong { font-size: .86rem; letter-spacing: .12em; }
+  .brand-text small { font-size: .50rem; }
+  .nav-links { gap: .3rem; }
+  .nav-links a { padding: .46rem .58rem; font-size: .72rem; letter-spacing: .07em; }
+}
+
+/* ---- POC page components ---- */
+.poc-stats-bar {
+  display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1.4rem;
+  margin: 1.4rem auto 0; padding: .85rem 1.6rem; border-radius: 16px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--stroke);
+  backdrop-filter: blur(12px); box-shadow: var(--shadow);
+}
+.poc-stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.poc-stat-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.55rem; font-weight: 700; line-height: 1.1; color: var(--cyan); }
+.poc-stat-lbl { font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: .15rem; }
+.poc-stat-sep { width: 1px; height: 26px; background: var(--stroke); }
+
+@media (max-width: 600px) {
+  .poc-stats-bar { gap: 1rem 1.4rem; padding: .75rem 1rem; width: 100%; justify-content: space-around; }
+  .poc-stat-sep { display: none; }
+  .poc-stat-item { min-width: 42%; }
+}
+
+/* Toolbar: Filters + Replay */
+.poc-toolbar {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .8rem;
+  margin-bottom: 2rem; padding: .65rem 1rem; border-radius: 14px;
+  background: rgba(255,255,255,.03); border: 1px solid var(--stroke);
+}
+.poc-filter-group { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; }
+.poc-filter-btn {
+  padding: .42rem .85rem; font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+  color: var(--muted); border-radius: 99px; border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.03); cursor: pointer;
+  transition: all .25s ease;
+}
+.poc-filter-btn:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); }
+.poc-filter-btn.active {
+  color: #fff; background: rgba(34,211,238,.16);
+  border-color: rgba(34,211,238,.45); box-shadow: 0 0 12px rgba(34,211,238,.25);
+}
+
+.poc-replay-btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .42rem .85rem; font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+  color: var(--cyan); border-radius: 99px; border: 1px solid rgba(34,211,238,.35);
+  background: rgba(34,211,238,.07); cursor: pointer;
+  transition: all .25s ease;
+}
+.poc-replay-btn:hover { background: rgba(34,211,238,.18); box-shadow: 0 0 14px rgba(34,211,238,.3); }
+.poc-replay-btn.animating svg { animation: pocSpin .7s cubic-bezier(.4,0,.2,1); }
+@keyframes pocSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Tier labels & Card details */
+.oc-tier-label { width: 100%; text-align: center; margin: .8rem 0 .5rem; }
+.oc-tier-badge {
+  display: inline-block; padding: .28rem .75rem; border-radius: 99px;
+  font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(34,211,238,.10); border: 1px solid rgba(34,211,238,.30);
+  box-shadow: 0 0 10px rgba(34,211,238,.15);
+}
+.oc-card-level {
+  display: block; font-size: .56rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: .45rem; opacity: .85;
+}
+.oc-sub-role {
+  display: block; font-size: .70rem; color: #94a3b8; font-style: italic; margin-top: -.4rem; margin-bottom: .65rem;
+}
+.oc-card-hint {
+  margin-top: .7rem; padding-top: .55rem; border-top: 1px dashed rgba(255,255,255,.1);
+  font-size: .66rem; font-weight: 600; letter-spacing: .06em; color: var(--cyan); opacity: .8;
+  transition: opacity .2s ease;
+}
+.oc-card:hover .oc-card-hint { opacity: 1; }
+
+/* Interactive filter dimming */
+.oc-card.is-dimmed { opacity: .22; transform: scale(.96); filter: grayscale(.7); pointer-events: none; }
+.oc-card.is-highlighted {
+  border-color: var(--cyan) !important;
+  box-shadow: var(--shadow), 0 0 35px rgba(34,211,238,.45) !important;
+}
+
+/* Stem with glow and junction node */
+.oc-stem-wrap { display: flex; flex-direction: column; align-items: center; position: relative; }
+.oc-junction-node {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--cyan); box-shadow: 0 0 12px var(--cyan);
+  position: absolute; bottom: -5px; z-index: 3;
+}
+
+/* Pulse ring around avatar */
+.oc-pulse-ring {
+  position: absolute; inset: -4px; border-radius: 50%;
+  border: 1.5px solid var(--c1); opacity: 0; pointer-events: none;
+  animation: ocRingPulse 3.6s ease-out infinite;
+}
+@keyframes ocRingPulse {
+  0% { transform: scale(1); opacity: .7; }
+  60% { transform: scale(1.28); opacity: 0; }
+  100% { transform: scale(1.28); opacity: 0; }
+}
+
+/* Governance Matrix tags */
+.poc-gov-badge {
+  display: inline-block; padding: .25rem .6rem; border-radius: 6px;
+  font-size: .72rem; font-weight: 600; color: #a5f3fc;
+  background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.28);
+}
+.poc-deliv-tag {
+  display: inline-block; margin: .15rem .25rem .15rem 0; padding: .2rem .5rem;
+  border-radius: 6px; font-size: .70rem; color: #e2e8f0;
+  background: rgba(255,255,255,.05); border: 1px solid var(--stroke);
+}
+
+/* Mid-desktop fluid tuning (901px - 1180px) */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .oc { --oc-gap: .8rem; }
+  .oc-row { gap: .8rem; }
+  .oc-card { padding: 1rem .8rem 1.1rem; }
+  .oc-card h4 { font-size: .67rem; margin: -1rem -.8rem .8rem; }
+  .oc-photo { width: 74px; height: 74px; font-size: 1.25rem; }
+  .oc-card .rt-list li { font-size: .76rem; }
+}
+
+/* ---- tablet + mobile: vertical hierarchy tree, connected lines ---- */
+@media (max-width: 900px) {
+  .oc {
+    --oc-gap: 1.1rem; --oc-drop: 26px; --oc-tick: 28px;
+    max-width: 620px; margin-inline: auto; align-items: stretch;
+  }
+  .oc-top { justify-content: center; }
+  .oc-card.oc-pm { width: 100%; max-width: 100%; }
+  
+  .oc-stem-wrap { align-self: flex-start; margin-left: 14px; }
+  .oc-junction-node { display: none; }
+  .oc-row { grid-template-columns: 1fr; padding-top: 0; padding-left: 36px; }
+
+  /* rail runs down the left; a horizontal tick connects each card */
+  .oc-row .oc-card::before {
+    top: calc(var(--oc-gap) * -1); left: -22px; margin-left: 0; width: 2px;
+    height: calc(100% + var(--oc-gap)); transform-origin: top;
+    background: linear-gradient(180deg, rgba(34,211,238,.85), rgba(139,92,246,.75));
+  }
+  .oc-row .oc-card:first-child::before { top: 0; height: calc(100% + var(--oc-gap)); }
+  .oc-row .oc-card:last-child::before  { height: calc(var(--oc-gap) + var(--oc-tick)); }
+  
+  .oc-row .oc-card::after,
+  .oc-row .oc-card:first-child::after,
+  .oc-row .oc-card:last-child::after,
+  .oc-row .oc-card:nth-child(n)::after {
+    top: var(--oc-tick); left: -22px; right: auto; width: 22px; height: 2px; transform-origin: left center;
+    background: rgba(34,211,238,.85); box-shadow: 0 0 6px rgba(34,211,238,.5);
+  }
+
+  /* mobile animation stagger */
+  .oc-in .oc-stem { transition-delay: .35s; }
+  .oc-in .oc-row .oc-card:nth-child(n)::before { transition-delay: calc(.60s + (var(--n, 0) * .28s)); }
+  .oc-in .oc-row .oc-card:nth-child(n)::after  { transition-delay: calc(.75s + (var(--n, 0) * .28s)); }
+  .oc-in .oc-row .oc-card:nth-child(n) { transition-delay: calc(.85s + (var(--n, 0) * .28s)), calc(.85s + (var(--n, 0) * .28s)), 0s, 0s; }
+  .oc-row .oc-card:nth-child(1) { --n: 0; } .oc-row .oc-card:nth-child(2) { --n: 1; }
+  .oc-row .oc-card:nth-child(3) { --n: 2; } .oc-row .oc-card:nth-child(4) { --n: 3; }
+}
+
+@media (max-width: 520px) {
+  .oc-row { padding-left: 28px; }
+  .oc-row .oc-card::before { left: -16px; }
+  .oc-row .oc-card::after,
+  .oc-row .oc-card:first-child::after,
+  .oc-row .oc-card:last-child::after,
+  .oc-row .oc-card:nth-child(n)::after {
+    left: -16px; width: 16px;
+  }
+  .oc-stem-wrap { margin-left: 12px; }
+  .oc-card { padding: .95rem .85rem 1.05rem; }
+  .oc-card h4 { margin: -.95rem -.85rem .75rem; font-size: .67rem; padding: .55rem .6rem; }
+  .oc-photo { width: 70px; height: 70px; font-size: 1.2rem; }
+  .oc-card .rt-list li { font-size: .78rem; }
+}
+
+@media (max-width: 360px) {
+  .oc-row { padding-left: 22px; }
+  .oc-row .oc-card::before { left: -12px; }
+  .oc-row .oc-card::after,
+  .oc-row .oc-card:first-child::after,
+  .oc-row .oc-card:last-child::after,
+  .oc-row .oc-card:nth-child(n)::after {
+    left: -12px; width: 12px;
+  }
+  .oc-stem-wrap { margin-left: 10px; }
+  .oc-card { padding: .85rem .75rem .95rem; }
+  .oc-photo { width: 62px; height: 62px; font-size: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oc-ready .oc-card, .oc-ready .oc-stem,
+  .oc-ready .oc-row .oc-card::before, .oc-ready .oc-row .oc-card::after { opacity: 1; transform: none; }
+  .oc *, .oc *::before, .oc *::after { transition: none !important; animation: none !important; }
 }
