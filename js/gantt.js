@@ -1,6 +1,6 @@
 /* =========================================================
    ABANGANAN — gantt.js
-   Tooltips, mobile swipe hint and the slow growth of the timeline bars.
+   Tooltips and the slow growth of the timeline bars.
    ========================================================= */
 (function () {
   'use strict';
@@ -30,21 +30,6 @@
         });
       });
     });
-  
-    if (window.innerWidth <= 720 && !shell.dataset.hintAdded) {
-      shell.dataset.hintAdded = '1';
-      const hint = document.createElement('div');
-      hint.textContent = "← Swipe horizontally to view the full 12-week timeline →";
-      hint.style.cssText = 'text-align:center;font-size:.68rem;letter-spacing:.1em;color:#93a4c0;margin-top:.9rem;opacity:.85;';
-      shell.parentElement.insertBefore(hint, shell.nextSibling);
-      let hidden = false;
-      scroller.addEventListener('scroll', () => {
-        if (hidden) return;
-        hidden = true;
-        hint.style.transition = 'opacity .6s ease';
-        hint.style.opacity = '0';
-      }, { passive: true, once: true });
-    }
   
     if (window.matchMedia('(hover: none)').matches) {
       bars.forEach((bar) => {

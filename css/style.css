@@ -855,12 +855,9 @@ canvas { display: block; }
   box-shadow: var(--shadow);
 }
 
-.gantt-scroll { overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; }
-.gantt-scroll::-webkit-scrollbar { height: 9px; }
-.gantt-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,.04); }
-.gantt-scroll::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #06b6d4, #6366f1 50%, #a855f7); border-radius: 99px; }
+.gantt-scroll { overflow: visible; }
 
-.gantt-inner { min-width: 820px; }
+.gantt-inner { min-width: 0; width: 100%; }
 
 .gantt-head, .gantt-row {
   display: grid;
@@ -939,21 +936,21 @@ canvas { display: block; }
   display: inline-block;
 }
 
-/* soft gentle shine that drifts across each bar */
+/* soft gentle shine that drifts across each bar (painted inside the bar, never spills outside) */
 .g-bar::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: 0;
-  width: 42%; border-radius: 10px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
-  transform: translateX(-160%);
+  content: ""; position: absolute; inset: 0; border-radius: 10px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent) no-repeat;
+  background-size: 42% 100%;
+  background-position: -80% 0;
   animation: barShine 9s cubic-bezier(.4,0,.25,1) infinite;
   animation-delay: var(--d, 0s);
   pointer-events: none;
   z-index: 1;
 }
 @keyframes barShine {
-  0%   { transform: translateX(-160%); }
-  55%  { transform: translateX(340%); }
-  100% { transform: translateX(340%); }
+  0%   { background-position: -80% 0; }
+  55%  { background-position: 180% 0; }
+  100% { background-position: 180% 0; }
 }
 
 /* subtle, eye-friendly ambient breathing */
@@ -987,7 +984,7 @@ canvas { display: block; }
   font-size: .68rem; font-weight: 600; color: #eaf2ff;
   background: rgba(8,13,28,.97);
   border: 1px solid var(--stroke-2);
-  box-shadow: 0 14px 34px -10px rgba(0,0,0,.95), 0 0 22px rgba(255,255,255,.12);
+  box-shadow: 0 14px 34px -10px rgba(0,0,0,.95);
   opacity: 0; pointer-events: none;
   transition: opacity .25s ease, transform .25s ease;
   z-index: 20;
@@ -1194,7 +1191,7 @@ canvas { display: block; }
   }
 
   .gantt-head .g-label, .g-task { position: sticky; left: 0; }
-  .gantt-inner { min-width: 760px; }
+  .gantt-inner { min-width: 0; }
   .gantt-head, .gantt-row { grid-template-columns: 190px 1fr; }
 
   /* Activity Sequence — tablet / small screen */
@@ -2406,3 +2403,19 @@ canvas { display: block; }
   margin-bottom: calc(clamp(1.5rem, 4vw, 3rem) + 1.5rem);
 }
 .poc-team-cta .btn { padding: .9rem 2rem; font-size: .8rem; text-align: center; }
+/* Gantt chart: always fits the screen, never scrolls sideways */
+.gantt-shell, .gantt-scroll, .gantt-inner { max-width: 100%; }
+.g-bar .bar-text { overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+@media (max-width: 720px) {
+  .gantt-head { grid-template-columns: 1fr; position: static; }
+  .gantt-head .g-label { display: none; }
+  .gantt-head .g-weeks span { padding: .7rem 0; font-size: .6rem; }
+  .gantt-row { grid-template-columns: 1fr; }
+  .g-task { position: static; border-right: none; border-bottom: 1px solid var(--stroke); padding: .9rem 1rem; }
+  .g-bar { font-size: .6rem; padding: 0 .4rem; letter-spacing: .02em; margin-inline: 2px; }
+  .g-bar .bar-text { letter-spacing: .02em; }
+}
+
+/* Gantt bars: center the label inside each bar */
+.g-bar { justify-content: center; text-align: center; }
+.g-bar .bar-text { text-align: center; }
