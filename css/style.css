@@ -2348,3 +2348,61 @@ canvas { display: block; }
   .oc-ready .oc-row .oc-card::before, .oc-ready .oc-row .oc-card::after { opacity: 1; transform: none; }
   .oc *, .oc *::before, .oc *::after { transition: none !important; animation: none !important; }
 }
+/* =========================================================
+   POC — Role / Member / Channel / Responsibility / Deliverables table
+   Unified alignment, spacing and type scale (scoped to .poc-roles)
+   ========================================================= */
+.poc-roles { table-layout: fixed; min-width: 980px; font-size: .9rem; }
+.poc-roles thead th:nth-child(1) { width: 20%; }
+.poc-roles thead th:nth-child(2) { width: 17%; }
+.poc-roles thead th:nth-child(3) { width: 17%; }
+.poc-roles thead th:nth-child(4) { width: 26%; }
+.poc-roles thead th:nth-child(5) { width: 20%; }
+.poc-roles thead th { vertical-align: middle; line-height: 1.4; }
+
+/* every cell shares the same padding and is centered on the row's middle line */
+.poc-roles tbody td { padding: 1.35rem 1.2rem; vertical-align: middle; font-size: .9rem; line-height: 1.5; }
+
+/* Role */
+.poc-roles .rt-role.strong {
+  display: inline-block; max-width: 100%;
+  padding: .5rem .85rem; border-radius: 10px;
+  font-size: .9rem; font-weight: 700; line-height: 1.35; letter-spacing: .01em;
+}
+
+/* Member */
+.poc-roles .rt-people { gap: 0; }
+.poc-roles .rt-person { gap: .7rem; font-size: .92rem; font-weight: 600; line-height: 1.35; align-items: center; }
+.poc-roles .rt-dot { width: 40px; height: 40px; border-radius: 12px; }
+
+/* Reporting channel */
+.poc-roles .poc-gov-badge {
+  display: inline-block; padding: .4rem .75rem; border-radius: 8px;
+  font-size: .82rem; font-weight: 600; line-height: 1.4;
+}
+
+/* Responsibilities */
+.poc-roles .rt-list { gap: .45rem; }
+.poc-roles .rt-list li { font-size: .9rem; line-height: 1.5; padding-left: 1.1rem; }
+.poc-roles .rt-list li::before { top: .6em; }
+
+/* Deliverables: tidy wrapping row of equal-size chips */
+.poc-roles td[data-label="Key Deliverables"] { display: table-cell; }
+.poc-roles .poc-deliv-tag {
+  display: inline-block; margin: .2rem .3rem .2rem 0; padding: .3rem .65rem;
+  font-size: .82rem; font-weight: 500; line-height: 1.4; border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  .poc-roles { min-width: 0; table-layout: auto; }
+  .poc-roles tbody td { padding: .75rem 1rem; }
+}
+
+/* Team-page CTA: centered, and clear of the tech-band divider line
+   (.tech-band pulls itself up with a negative margin, so add matching space below) */
+.poc-team-cta {
+  display: flex; justify-content: center; align-items: center;
+  margin-top: 2.5rem;
+  margin-bottom: calc(clamp(1.5rem, 4vw, 3rem) + 1.5rem);
+}
+.poc-team-cta .btn { padding: .9rem 2rem; font-size: .8rem; text-align: center; }

@@ -95,21 +95,6 @@
       <p>Project: Abanganan &mdash; Boarding House and Room Finder System for Dapitan City.</p>
     </div>
 
-    <!-- Interactive Toolbar -->
-    <div class="poc-toolbar" data-reveal>
-      <div class="poc-filter-group" id="pocFilters">
-        <button type="button" class="poc-filter-btn active" data-filter="all">All Roles</button>
-        <button type="button" class="poc-filter-btn" data-filter="lead">Leadership (Tier 1)</button>
-        <button type="button" class="poc-filter-btn" data-filter="core">Engineering &amp; QA (Tier 2)</button>
-      </div>
-      <div class="poc-action-group">
-        <button type="button" class="poc-replay-btn" id="replayBtn" title="Replay animated entrance" aria-label="Replay animated entrance">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
-          Replay Animation
-        </button>
-      </div>
-    </div>
-
     <!-- Tree Structure -->
     <div class="poc-chart-wrap" data-reveal>
       <div class="oc poc-tree" role="img" aria-label="Project team organizational chart for Abanganan">
@@ -290,7 +275,7 @@
     </div>
 
     <div class="ade-table-wrap" data-reveal>
-      <table class="ade-table rt-table rt-roles">
+      <table class="ade-table rt-table rt-roles poc-roles">
         <thead>
           <tr>
             <th>Organizational Role</th>
@@ -450,8 +435,8 @@
     </div>
 
     <!-- Quick link to the Team page -->
-    <div style="text-align:center; margin-top:2.5rem;" data-reveal>
-      <a class="btn btn-ghost" href="team.html">VIEW FULL TEAM PROFILES &amp; SOCIALS &rarr;</a>
+    <div class="poc-team-cta" data-reveal>
+      <a class="btn btn-ghost" href="team.html">VIEW FULL TEAM PROFILES &amp; SOCIALS</a>
     </div>
   </section>
 
@@ -482,23 +467,9 @@
 <script src="js/techstack.js"></script>
 <script src="js/team.js"></script>
 <script>
-/* Org chart entrance animation and interactive controls */
+/* Org chart entrance animation */
 (function () {
   var oc = document.querySelector('.oc');
-  var replayBtn = document.getElementById('replayBtn');
-  var filterBtns = document.querySelectorAll('.poc-filter-btn');
-
-  function triggerChartIn() {
-    if (!oc) return;
-    oc.classList.remove('oc-in');
-    void oc.offsetWidth; /* force reflow */
-    oc.classList.add('oc-ready');
-    requestAnimationFrame(function () {
-      setTimeout(function () {
-        oc.classList.add('oc-in');
-      }, 50);
-    });
-  }
 
   if (oc) {
     oc.classList.add('oc-ready');
@@ -517,36 +488,6 @@
     }
   }
 
-  if (replayBtn) {
-    replayBtn.addEventListener('click', function () {
-      triggerChartIn();
-      replayBtn.classList.add('animating');
-      setTimeout(function () { replayBtn.classList.remove('animating'); }, 800);
-    });
-  }
-
-  /* Filter/highlight buttons */
-  if (filterBtns.length) {
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        filterBtns.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var f = btn.dataset.filter;
-        var cards = oc.querySelectorAll('.oc-card');
-        cards.forEach(function (c) {
-          if (f === 'all') {
-            c.classList.remove('is-dimmed', 'is-highlighted');
-          } else if (c.dataset.tier === f) {
-            c.classList.remove('is-dimmed');
-            c.classList.add('is-highlighted');
-          } else {
-            c.classList.add('is-dimmed');
-            c.classList.remove('is-highlighted');
-          }
-        });
-      });
-    });
-  }
 })();
 </script>
 
