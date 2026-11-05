@@ -11,26 +11,27 @@
     if (!shell || !scroller) return;
   
     const bars = document.querySelectorAll('.g-bar');
+
+    /* keep a tooltip fully inside the chart box (works for hover and for tap) */
+    function placeTip(tip) {
+      requestAnimationFrame(() => {
+        tip.style.left = '50%';   /* always measure from the centred position, so repeated calls give the same answer */
+        const tipRect = tip.getBoundingClientRect();
+        const shellRect = shell.getBoundingClientRect();
+        if (tipRect.left < shellRect.left + 8) {
+          tip.style.left = 'calc(50% + ' + (shellRect.left + 8 - tipRect.left) + 'px)';
+        } else if (tipRect.right > shellRect.right - 8) {
+          tip.style.left = 'calc(50% - ' + (tipRect.right - (shellRect.right - 8)) + 'px)';
+        }
+      });
+    }
+
     bars.forEach((bar) => {
       const tip = bar.querySelector('.bar-tip');
       if (!tip) return;
-      bar.addEventListener('mouseenter', () => {
-        tip.style.left = '50%';
-        tip.style.transform = 'translateX(-50%) translateY(0)';
-        requestAnimationFrame(() => {
-          const tipRect = tip.getBoundingClientRect();
-          const shellRect = shell.getBoundingClientRect();
-          if (tipRect.left < shellRect.left + 8) {
-            const shift = shellRect.left + 8 - tipRect.left;
-            tip.style.left = 'calc(50% + ' + shift + 'px)';
-          } else if (tipRect.right > shellRect.right - 8) {
-            const shift = tipRect.right - (shellRect.right - 8);
-            tip.style.left = 'calc(50% - ' + shift + 'px)';
-          }
-        });
-      });
+      bar.addEventListener('mouseenter', () => placeTip(tip));
     });
-  
+
     if (window.matchMedia('(hover: none)').matches) {
       bars.forEach((bar) => {
         bar.addEventListener('click', (e) => {
@@ -41,16 +42,16 @@
           bars.forEach((b) => {
             b.dataset.tipOpen = '0';
             const t = b.querySelector('.bar-tip');
-            if (t) t.style.opacity = '';
+            if (t) { t.style.opacity = ''; t.style.transform = ''; }
           });
-          if (!isOpen) { bar.dataset.tipOpen = '1'; tip.style.opacity = '1'; }
+          if (!isOpen) { bar.dataset.tipOpen = '1'; tip.style.opacity = '1'; tip.style.transform = 'translateX(-50%) translateY(0)'; placeTip(tip); }
         });
       });
       document.addEventListener('click', () => {
         bars.forEach((b) => {
           b.dataset.tipOpen = '0';
           const t = b.querySelector('.bar-tip');
-          if (t) t.style.opacity = '';
+          if (t) { t.style.opacity = ''; t.style.transform = ''; }
         });
       });
     }
@@ -189,6 +190,32 @@
         }, idx === 0 ? 0 : '>-0.35'); // Next bar starts as the previous one is finishing
       });
     };
+
+    /* phones: each row plays when it scrolls into view (no long sequential timeline) */
+    if (window.matchMedia('(max-width: 720px)').matches && 'IntersectionObserver' in window) {
+      const rio = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          rio.unobserve(en.target);
+          const task = en.target.querySelector('.g-task');
+          const bar = en.target.querySelector('.g-bar');
+          if (task) gsap.to(task, { opacity: 1, x: 0, duration: 0.45, ease: 'power2.out' });
+          if (!bar) return;
+          const textEl = bar.querySelector('.bar-text');
+          const targetText = textEl ? (textEl.dataset.originalText || textEl.textContent.trim()) : '';
+          gsap.to(bar, {
+            clipPath: 'inset(0 0% 0 0 round 7px)', opacity: 1, duration: 0.7, ease: 'power2.out',
+            onStart: () => {
+              bar.dataset.isAnimating = '1';
+              if (textEl && targetText) scrambleText(textEl, targetText, 700);
+            },
+            onComplete: () => { delete bar.dataset.isAnimating; bar.style.clipPath = 'none'; }
+          });
+        });
+      }, { threshold: 0.35 });
+      document.querySelectorAll('.gantt-row').forEach((r) => rio.observe(r));
+      return;
+    }
 
     const shell = document.querySelector('.gantt-shell');
     if (shell && 'IntersectionObserver' in window) {

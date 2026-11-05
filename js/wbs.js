@@ -77,6 +77,29 @@
       return;
     }
 
+    /* phones (stacked accordion): skip the long cascade. The title card and each
+       column header fade in as they scroll into view, and the tasks inside stay
+       visible so an opened column is never empty. */
+    if (isStacked()) {
+      if (root) gsap.set(root, { opacity: 0, y: 18 });
+      heads.forEach((h) => h && gsap.set(h, { opacity: 0, y: 18 }));
+      const targets = [root].concat(heads).filter(Boolean);
+      if ('IntersectionObserver' in window) {
+        const sio = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              gsap.to(en.target, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+              sio.unobserve(en.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        targets.forEach((t) => sio.observe(t));
+      } else {
+        gsap.set(targets, { opacity: 1, y: 0 });
+      }
+      return;
+    }
+
     /* starting state */
     if (root) gsap.set(root, { opacity: 0, y: 26 });
     if (trunk) gsap.set(trunk, { scaleY: 0, transformOrigin: 'top center' });
