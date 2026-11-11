@@ -2551,3 +2551,40 @@ canvas { display: block; }
 .merge-head .ph-divider { margin: 1.4rem auto 0; }
 .merge-head .poc-stats-bar { margin-top: 1.4rem; }
 
+
+/* =========================================================
+   PROJECT COMMUNICATION PLAN
+   ========================================================= */
+.cp-section { padding-bottom: 3rem; }
+.cp-sub { display: flex; align-items: center; gap: .8rem; margin: clamp(2rem, 5vw, 3rem) 0 1.1rem; font-size: clamp(1.1rem, 3.4vw, 1.45rem); line-height: 1.25; color: #fff; }
+.cp-section .cp-sub:first-child { margin-top: 0; }
+.cp-num {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  width: 2rem; height: 2rem; border-radius: 10px; font-size: .95rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--cyan), #8b5cf6); color: #04121f;
+}
+.cp-table { width: 100%; table-layout: fixed; }
+.cp-table thead th, .cp-table tbody td { text-align: left; vertical-align: middle; padding: 1.1rem 1.2rem; line-height: 1.5; font-size: .92rem; min-width: 0; }
+.cp-stake thead th:nth-child(1) { width: 24%; } .cp-stake thead th:nth-child(2) { width: 28%; } .cp-stake thead th:nth-child(3) { width: 48%; }
+.cp-matrix thead th:nth-child(1) { width: 15%; } .cp-matrix thead th:nth-child(2) { width: 25%; } .cp-matrix thead th:nth-child(3) { width: 24%; } .cp-matrix thead th:nth-child(4) { width: 16%; } .cp-matrix thead th:nth-child(5) { width: 20%; }
+.cp-types thead th:nth-child(1) { width: 32%; } .cp-types thead th:nth-child(2) { width: 22%; } .cp-types thead th:nth-child(3) { width: 46%; }
+.cp-table .ade-act { display: block; margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.3; }
+.cp-table .rt-tag, .cp-table .rt-role { display: inline-block; max-width: 100%; margin: 0; font-size: .8rem; line-height: 1.4; white-space: normal; }
+.cp-dot-icon { display: inline-flex; align-items: center; justify-content: center; font-size: .9rem; color: var(--c1); }
+
+/* objectives */
+.cp-obj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1rem; }
+.cp-obj {
+  display: flex; gap: .9rem; align-items: flex-start; padding: 1.1rem 1.2rem; border-radius: 16px;
+  background: rgba(255,255,255,.035); border: 1px solid var(--stroke); box-shadow: var(--shadow);
+}
+.cp-n { flex: 0 0 auto; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; line-height: 1.2; background: linear-gradient(120deg, var(--cyan), #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cp-obj p { margin: 0; color: #d6e0f2; font-size: .93rem; line-height: 1.6; }
+
+@media (max-width: 720px) {
+  .cp-table { table-layout: auto; }
+  .cp-table tbody td { padding: .75rem 1rem; }
+}
+
+/* long hero title on the Communication Plan page: fit on small phones without cutting a word */
+.ph-title.cp-title { width: 100%; max-width: 100%; font-size: clamp(1.15rem, 6.2vw, 3.4rem); overflow-wrap: normal; word-break: normal; }
