@@ -1207,6 +1207,12 @@ canvas { display: block; }
 }
 
 @media (max-width: 480px) {
+  /* Keep names and other long labels inside stacked cards on narrow phones. */
+  .glass-card, .glass-panel, .team-card, .ade-table tbody td { min-width: 0; }
+  .rt-person { min-width: 0; max-width: 100%; }
+  .rt-person > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+  .ph-intro { max-width: 100%; }
+
   .home-hero .ph-title { font-size: clamp(1.9rem, 11.5vw, 3rem); letter-spacing: .01em; }
   .ph-title { font-size: clamp(1.45rem, 7.4vw, 2rem); max-width: 14ch; }
   .ph-sub { font-size: .88rem; }
